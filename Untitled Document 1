@@ -123,13 +123,17 @@ put example_b.tar   	//推送文件到服务器 /home/root 目录下
 
 mysql-workbench   //打开服务器上workbeanch
 
+
+*********************ubuntu系统中文配置******************************
+
 locale -a |grep zh_CN #是否安装中文包
 
-sudo apt-get install  language-pack-zh-hans  //安装中文语言包
+sudo apt-get install  language-pack-zh-hans  //安装中文语言
+
+拷贝字体到ubuntu系统 /usr/share/fonts/truetype
 
 
 gedit /etc/default/locale 
-
 # 本地语言配置
 LANG="en_US.UTF-8"
 LC_NUMERIC="zh_CN.UTF-8"
@@ -144,6 +148,8 @@ LC_IDENTIFICATION="zh_CN.UTF-8"
 
 mysql 中文显示乱码:
 https://blog.csdn.net/weixin_39842528/article/details/82991091
+
+***************************************************
 
 
 每个页面先建立一个websocket连接,在浏览图片时发送http请求,检查websocket状态,如果正常发送相应工地信息,进行后台图像推送,否则重新建立一个新的websocket链接,这样就能保证一个页面只维持一个websocke连接
@@ -222,7 +228,7 @@ sudo apt install docker.io
 通过apt的docker官方源安装Docker社区版:
 https://blog.csdn.net/hh2030/article/details/80836926
 
-Ubuntu16.04下解决Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+Ubuntu16.04下解决Unable to fetch some archives, maybe run apt-get update or try with --fix-missing :
 
 sudo vim /etc/resolv.conf 
 添加nameserver 8.8.8.8
@@ -277,8 +283,16 @@ https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
 with语句来自动帮我们调用close()方法
 
 5. 支持中文
-
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码,再import后添加
+
+
+6. python库位置查看
+首先使用 sys 下的 path 变量查看所有的 python 路径：
+import sys
+sys.path
+
+>> import moudle
+>> module.__file__
 
 ***********************python**************************
 
