@@ -348,3 +348,17 @@ Linux 释放GPU显存:
 sudo fuser /dev/nvidia*	 //显示所有占用nvidia设备的进程pid
 kill -9 pid
 
+
+监控java本地或远程程序:
+jvisualvm
+
+文件分割
+split -C 100M smoke_detection.tar.gz
+
+二进制文件分割
+split -b 100M data.bak
+
+文件合并
+cat file1 file2 > file
+
+
