@@ -1,0 +1,57 @@
+
+qrh123@skytum.cn
+git@192.168.1.123:2289/work-handover/qiuronghua.git
+
+Generating a new SSH key pair:
+ssh-keygen -t rsa -C "your.email@example.com" -b 4096
+
+在服务器添加完公钥后报错 sign_and_send_pubkey: signing failed: agent refused operation:
+ssh-add
+
+测试ssh git服务器
+ssh -p 2289 git@192.168.1.123
+
+本地文件上传远程gitlab:
+git config --global user.name "用户名"
+git config --global user.email "邮箱"
+git init
+git remote add origin http(ssh)://xxURL/xxx/xxx.git
+git add .
+git commit -m "something description"
+git push -u origin master        //注解：上传文件到仓库
+git pull origin master              //注解：拉取仓库文件到本地
+
+
+从远程拉取一个分支到本地： git clone -b lpnr_hao git@git-server:skytum/lpnr.git
+
+查看本地分支： git branch
+
+查看本地状态:  git status
+
+git add [file, * 是添加全部]  
+
+git commit -am 'feat:描述信息' 
+
+
+
+改变所在分支：git checkout master    前提是本地分支状态无发生改变，才可改变分支
+
+创建本地分支：git branch master
+
+将分支推送到远程：git push origin master:wallace/brach
+
+删除本地分支:git branch -D master
+删除远程分支：git push origin :wallace/brach
+
+删除远程分支文件：git rm -r --cached hao.c
+		 git commit -m 'delete:hao.c'
+		 git push origin master
+
+查看提交状态：git log
+
+恢复某一次提交状态：git reset df74.....  只將緩衝區commit的東西測繪
+		   git reset --hard df74.....  將代碼也恢復此次狀態
+
+创建不跟踪文件：touch .gitignore   将不需要被跟踪的文件的相对路径，保存在此文件中。  git status 可查看跟踪状态
+
+g++ main.cpp decoder.cpp decoder.h -o main -std=c++11 -lpthread `pkg-config --libs opencv`
