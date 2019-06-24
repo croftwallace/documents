@@ -1,0 +1,46 @@
+
+#快速锁屏:
+win+L
+
+
+#查看该端口被那个PID所占用
+netstat -ano|findstr "<端口号>"
+
+
+#查看该PID对应的进程名称
+tasklist|findstr “<PID号>”
+
+#windows 后台运行jar
+javaw -jar xxx.jar
+
+#linux 后台运行jar
+java -jar xxx.jar & 
+
+#notepad 操作多行，alt+拖动 选中多行，同时操作
+
+
+maven 发布jar到仓库:
+
+mvn deploy:deploy-file -DgroupId="com.qixiang.ox" -DartifactId=ox-im-contract -Dversion="1.0.0" -Dpackaging=jar  -Dfile=D:\softspace\java\projects\j-im\ox-im-contract\target\ox-im-contract-1.0.0-SNAPSHOT.jar -Durl=http://192.168.1.232:3001/repository/qixiang_ox -DrepositoryId=qixiangmaven
+
+
+maven 本地jar打入本地仓库:
+
+mvn install:install-file -Dfile=C:\Users\Administrator\Desktop\ox-commons-1.0-SNAPSHOT.jar -DgroupId="com.qixiang.ox" -DartifactId=ox-commons -Dversion="1.0" -Dpackaging=jar
+
+
+ffmpeg -i Game.Of.Thrones.S03E05.Kissed.By.Fire.1080p.BluRay.DTS-HD.MA.5.1.x264-PublicHD.mkv -c copy -c:v libx264 -vf scale=-2:720 Game.Of.Thrones.S03E05.Kissed.By.Fire.720p.mkv
+
+
+ffmpeg -i input.mp4 -i logo.jpg -filter_complex overlay output_1.mp4
+
+ffmpeg -i input.mp4 -ss 00:00:2 -t 10 -r 1 -q:v 2 -f image2 pic-%03d.jpeg
+
+
+VP9: 开源视频压缩格式
+
+
+***************************************Redis 相关***************************************
+
+没有对应的key 返回null
+key-value 为 String:String 类型，空值无法为 null 对象
