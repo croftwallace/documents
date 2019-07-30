@@ -43,8 +43,20 @@ git checkout -b [branch name]
 #删除本地分支
 git branch -d [branch name]		
 
+#显示所有本地及远端分支名
+git branch -a
+
+#显示每个（本地）分支当前指向的提交记录的哈希值，以及和其上游分支的相对位置
+git branch -v  // -v == -verbose
+
+#显示每个（本地）分支当前指向的提交记录的哈希值，以及和其上游分支的相对位置，同时会显示上游分支的名字
+git branch -vv
+
+
 #删除github远程分支
 git push origin :[branch name]	
+
+
 
 #删除服务器文件,本地保留
 git rm --cached filename/-r directory

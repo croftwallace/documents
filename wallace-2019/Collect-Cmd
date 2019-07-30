@@ -6,6 +6,46 @@ win+L
 #查看该端口被那个PID所占用
 netstat -ano|findstr "<端口号>"
 
+#ubuntu 新建文件夹快捷键
+Ctrl Shift n
+
+读取的权限等于4，用r表示
+写入的权限等于2，用w表示
+执行的权限等于1，用x表示
+
+#配置软链接
+sudo ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
+
+#文件关联
+sudo ln -n /etc/nginx/sites-available/myserver /etc/nginx/sites-enabled/myserver
+
+#删除nginx，–purge包括配置文件
+sudo apt --purge remove nginx
+
+#罗列出与nginx相关的软件
+dpkg --get-selections|grep nginx 
+
+*****************dash 添加快速启动开始 *****************
+desktop修改位置: /usr/share/applications
+
+[Desktop Entry]
+
+Encoding=UTF-8
+
+Name=eclipse
+
+Exec=/home/wallace/software/eclipse/eclipse
+
+Icon=/home/wallace/software/eclipse/icon.xpm
+
+Terminal=false
+
+Type=Application
+
+Categories=Development;
+
+*****************dash 添加快速启动结束 *****************
+
 
 #查看该PID对应的进程名称
 tasklist|findstr “<PID号>”
