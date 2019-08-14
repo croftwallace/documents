@@ -117,6 +117,9 @@ ssh -Y root@47.92.214.59
 
 sftp root@47.92.214.59
 
+207.246.119.151
+S8]rLUHCDE9W)SVD
+
 get example_a.tar /home/wallace/   //拉取文件到本地
 
 put example_b.tar   	//推送文件到服务器 /home/root 目录下
