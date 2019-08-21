@@ -10,6 +10,15 @@ git config --global user.email "croft_wallace@163.com"
 #git常见命令地址
 https://www.jianshu.com/p/f92ed1ca8120
 
+Generating a new SSH key pair:
+ssh-keygen -t rsa -C "your.email@example.com" -b 4096
+
+在服务器添加完公钥后报错 sign_and_send_pubkey: signing failed: agent refused operation:
+ssh-add
+
+测试ssh git服务器
+ssh -p 2289 git@192.168.1.123
+
 git init //git初始化当前目录
 
 git remote add origin https://****.git  //将本地仓库关联到远程地址 
@@ -72,6 +81,9 @@ git log -p master..origin/master
 
 #合并最新代码到本地分支
 git merge origin/master
+
+#本地合并modify到当前分支，非modify
+git merge modify
 
 
 

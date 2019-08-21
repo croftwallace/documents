@@ -1,0 +1,367 @@
+摄像头：
+1p8904e806.51mypc.cn:37360
+
+
+
+
+dpkg -l 命令可以浏览所有安装的包，其中 rc 状态的包即卸载了包却保留了配置文件。如果想要完整删除所有 rc 状态的包一个一个删还是很麻烦的，所以可以使用以下命令进行清理
+
+dpkg -l | grep ^rc | cut -d' ' -f3 | sudo xargs dpkg --purge  
+
+安装xfce4
+apt install xfce4
+
+启动桌面
+startxfce4
+
+/home/skytum/Desktop/SKYTUM/site.txt
+
+valgrind --leak-check=full --log-file=valgrind.txt ./design_ui
+
+
+
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+
+
+
+ A display manager is a program that provides graphical login              │ 
+ │ capabilities for the X Window System.                                     │ 
+ │                                                                           │ 
+ │ Only one display manager can manage a given X server, but multiple        │ 
+ │ display manager packages are installed. Please select which display       │ 
+ │ manager should run by default.                                            │ 
+ │                                                                           │ 
+ │ Multiple display managers can run simultaneously if they are configured   │ 
+ │ to manage different servers; to achieve this, configure the display       │ 
+ │ managers accordingly, edit each of their init scripts in /etc/init.d,     │ 
+ │ and disable the check for a default display manager.  
+
+
+java.lang.NoClassDefFoundError: Could not initialize class sun.awt.X11Graphi
+
+
+#java环境配置　文件: ~/.bashrc
+export JAVA_HOME=/home/wallace/software/jdk1.8
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt,jar:$JAVA_HOME/lib/tools.jar
+export PATH="/home/wallace/anaconda2/bin:$PATH"
+export PATH="/home/wallace/software/Qt5.9.1/5.9.1/gcc_64/bin":$PATH
+
+#docker环境配置　文件: ~/.bashrc
+xhost +
+alias dbash='nvidia-docker run -it \
+-v /etc/localtime:/etc/localtime:ro \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+-v /tmp/.docker.xauth:/tmp/.docker.xauth \
+-e DISPLAY=unix$DISPLAY \
+-v $HOME/ng-workspace:/root/workspace \
+--net=host \
+-u root \
+-w /root/workspace \
+-e GDK_SCALE \
+-e GDK_DPI_SCALE \
+qt5:version1 \
+/bin/bash'
+
+netstat -n | awk '/^tcp/ {++y[$NF]} END {for(w in y) print w, y[w]}'
+
+CLOSING 1
+CLOSE_WAIT 70
+TIME_WAIT 3
+ESTABLISHED 79
+LAST_ACK 1
+FIN_WAIT1 3
+
+昊广teamviewer:
+1067696093
+
+#查看当前目录下的文件数量（包含子目录中的文件） 注意：R，代表子目录
+
+ls -lR|grep "^-"| wc -l
+
+http://39.108.61.127:8989/nenggong/pictures/default.jpg
+
+mysql -h127.0.0.1 -uroot -p -P 3307
+
+https://www.google-analytics.com/analytics.js
+
+sudo NV*.run --uninstall //卸掉nvidia驱动,用.run文件安装的
+
+sudo apt-get remove --purge nvidia* //卸掉nvidia驱动,PPA的安装方式
+
+//添加nvidia驱动源
+sudo apt purge nvidia-*
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+
+sudo lspci | grep VGA //显卡查看
+sudo apt-cache search nvidia	//查找显卡驱动最新的版本号
+
+linux-source-4.4.0
+
+-Djava.awt.headless=true
+java -Djava.awt.headless=true -jar Netty-SpringMVC-1.0.0-SNAPSHOT.jar &
+
+nohup java -Djava.awt.headless=true -jar Netty-SpringMVC-1.0.0-SNAPSHOT.jar &
+
+####天量阿里云
+
+ssh -i ~/skytum_aliyun.pem -X root@39.108.61.127  //进入服务器
+
+sftp -i ~/skytum_aliyun.pem root@39.108.61.127    // 进入阿里云服务器 默认目录/home/root/
+
+
+####昊广阿里云
+ssh -Y root@47.92.214.59
+
+sftp root@47.92.214.59
+
+207.246.119.151
+S8]rLUHCDE9W)SVD
+
+get example_a.tar /home/wallace/   //拉取文件到本地
+
+put example_b.tar   	//推送文件到服务器 /home/root 目录下
+
+mysql-workbench   //打开服务器上workbeanch
+
+
+*********************ubuntu系统中文配置******************************
+
+locale -a |grep zh_CN #是否安装中文包
+
+sudo apt-get install  language-pack-zh-hans  //安装中文语言
+
+拷贝字体到ubuntu系统 /usr/share/fonts/truetype
+
+
+gedit /etc/default/locale 
+# 本地语言配置
+LANG="en_US.UTF-8"
+LC_NUMERIC="zh_CN.UTF-8"
+LC_TIME="zh_CN.UTF-8"
+LC_MONETARY="zh_CN.UTF-8"
+LC_PAPER="zh_CN.UTF-8"
+LC_NAME="zh_CN.UTF-8"
+LC_ADDRESS="zh_CN.UTF-8"
+LC_TELEPHONE="zh_CN.UTF-8"
+LC_MEASUREMENT="zh_CN.UTF-8"
+LC_IDENTIFICATION="zh_CN.UTF-8"
+
+mysql 中文显示乱码:
+https://blog.csdn.net/weixin_39842528/article/details/82991091
+
+***************************************************
+
+
+每个页面先建立一个websocket连接,在浏览图片时发送http请求,检查websocket状态,如果正常发送相应工地信息,进行后台图像推送,否则重新建立一个新的websocket链接,这样就能保证一个页面只维持一个websocke连接
+
+
+
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+You might want to run 'apt-get -f install' to correct these:
+The following packages have unmet dependencies:
+ kde-telepathy-minimal : Depends: kde-config-telepathy-accounts (>= 15.04.0) but it is not going to be installed
+E: Unmet dependencies. Try 'apt-get -f install' with no packages (or specify a solution).
+
+
+//服务器上ftp的路径配置为　/home/hg/Desktop/SKYTUM/
+ftp://ftphg:haoguang@222.180.243.178
+
+
+
+
+$('.ui.form').form({ 
+fields: { name: { identifier: 'name', rules: [{ type: 'empty' }] } }, 
+onSuccess: function(e) { //阻止表单的提交 
+e.preventDefault(); } }).api({
+ action: 'create user',
+ serializeForm: true, // arbitrary POST/GET same across all requests 
+ data: { session: 22 }, // modify data PER element in callback
+ beforeSend: function(settings) { // cancel request if no id 
+if( !$(this).data('id') ) {
+ return false;
+ } 
+settings.data.userID = $(this).data('id'); return settings;
+ }
+ })
+
+
+
+22451 org.eclipse.equinox.launcher_1.3.201.v20161025-1711.jar -Dosgi.requiredJavaVersion=1.8 -XX:+UseG1GC -XX:+UseStringDeduplication -Dosgi.requiredJavaVersion=1.8 -Xms256m -Xmx1024m
+23539 Jps -Denv.class.path=.:/home/wallace/software/jdk1.8/lib/dt,jar:/home/wallace/software/jdk1.8/lib/tools.jar -Dapplication.home=/home/wallace/software/jdk1.8 -Xms8m
+23436 jar
+
+
+java -XX:MaxPermSize=2048m -Xmx2048m -Xms1024m  -jar Netty-SpringMVC-1.0.0-SNAPSHOT.jar
+
+
+protocols (like `ftp:`) are blocked. Please deliver web-accessible resources over modern protocols like HTTPS. See https://www.chromestatus.com/feature/5709390967472128 for details.
+
+历史数据
+
+
+google cloud platform 
+免费1年使用$300,需要双币信用卡
+计算引擎(标配)一个月价格：          
+
+每个月最大流量为：
+
+计算引擎(最低配)一个月价格：
+
+每个月最大流量为：
+
+
+系统正在运行的内核版本:
+4.15.0-39-generic
+
+安装当前运行的内核的内核头文件和开发包:
+wallace@wallace:~$ uname -r
+4.15.0-39-generic
+wallace@wallace:~$ sudo apt-get install linux-headers-4.15.0-39-generic
+
+INFO:Enable nvidia-410
+
+ubuntu16.04 源 包含docker 可直接安装,版本可能比较旧
+sudo apt install docker.io
+
+通过apt的docker官方源安装Docker社区版:
+https://blog.csdn.net/hh2030/article/details/80836926
+
+Ubuntu16.04下解决Unable to fetch some archives, maybe run apt-get update or try with --fix-missing :
+
+sudo vim /etc/resolv.conf 
+添加nameserver 8.8.8.8
+
+sudo apt-get install -y nvidia-docker2
+sudo pkill -SIGHUP dockerd
+
+测试nvidia-docker
+sudo docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
+
+
+wallace@wallace:~/nvidia-docker$ sudo docker run tensorflow/tensorflow
+[I 16:12:27.017 NotebookApp] Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 16:12:27.138 NotebookApp] Serving notebooks from local directory: /notebooks
+[I 16:12:27.138 NotebookApp] The Jupyter Notebook is running at:
+[I 16:12:27.138 NotebookApp] http://(3fc2507136f5 or 127.0.0.1):8888/?token=0f760cd2b52009c535ee03ae8f7e0eb567a595c540d69106
+[I 16:12:27.138 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 16:12:27.138 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://(3fc2507136f5 or 127.0.0.1):8888/?token=0f760cd2b52009c535ee03ae8f7e0eb567a595c540d69106
+
+jupyte代码自动补全:https://blog.csdn.net/weixin_37595559/article/details/81540482
+服务端启动 jupyter:
+ipython notebook  --allow-root
+
+
+
+docker 启动容器: sudo docker start xxxx
+docker 进入容器: sudo docker attach xxxx
+
+
+拉取docker tensorflow gpu鏡像:
+docker run --runtime=nvidia -it tensorflow/tensorflow:latest-gpu bash
+
+tensorflow gpu docker container:
+root@138d33de7ef0:/notebooks# 
+
+***********************python**************************
+
+1. 安装pip3
+sudo apt-get install python3-pip
+
+2. NumPy:支持高端大量的维度数组与矩阵运算
+https://zh.wikipedia.org/wiki/NumPy
+
+3. yield:将函数变为generator
+https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/
+
+4. with open('/path/to/file', 'r') as f:
+with语句来自动帮我们调用close()方法
+
+5. 支持中文
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码,再import后添加
+
+
+6. python库位置查看
+首先使用 sys 下的 path 变量查看所有的 python 路径：
+import sys
+sys.path
+
+>> import moudle
+>> module.__file__
+
+***********************python**************************
+
+
+
+***********************docker**************************
+1. docker 宿主机与容器里文件共享
+运行命令：sudo docker run --name tf_1 --runtime=nvidia -it -v /home/wallace/tf-docker:/share tensorflow/tensorflow:latest-gpu /bin/bash
+链接:https://blog.csdn.net/zhuchunyan_aijia/article/details/80094644
+
+2. docker run --name tf_2 -it -v /home/wallace/tf-docker:/share --runtime=nvidia tensorflow/tensorflow:latest-gpu-py3 python
+Start a GPU container with Python 3, using the Python interpreter.
+
+3. docker run --name tf_3 -it -v /home/wallace/tf-docker:/tf/notebooks -p 8888:8888 tensorflow/tensorflow:latest-py3-jupyter
+Run a Jupyter notebook server with your own notebook directory (assumed here to be ~/notebooks). To use it, navigate to localhost:8888 in your browser.
+
+4. nvidia-docker run -i -t -p 8888:8888 daocloud.io/daocloud/tensorflow:1.4.0-rc1-gpu /bin/bash
+
+解释一下这条命令的含义，docker run 的意思就是字面意思，-i -t 的意思是进行交换式的工作环境，-p 8888:8888 是将镜像中的端口映射到宿主机，在内部外部都是8888端口，当然也可以修改， /bin/bash 的意思是选择镜像的输出，这里选择的是 输出到bash
+
+https://blog.csdn.net/qq_37341836/article/details/80303357 
+***********************docker**************************
+
+
+***********************tensorflow**************************
+1. tensorflow版本查看
+import tensorflow as tf
+tf.__version__
+当前使用 1.12.0
+
+***********************tensorflow**************************
+
+
+
+阿里云远程连接密码:256126
+
+************
+网站ftp:
+ip:120.133.3.203
+pwd:skytum
+
+
+Installing collected packages: pymysql
+Successfully installed pymysql-0.9.3
+You are using pip version 10.0.1, however version 18.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+wallace@wallace:~$ pip remove pymysql
+ERROR: unknown command "remove"
+wallace@wallace:~$ 
+
+
+Linux 释放GPU显存:
+sudo fuser /dev/nvidia*	 //显示所有占用nvidia设备的进程pid
+kill -9 pid
+
+
+监控java本地或远程程序:
+jvisualvm
+
+文件分割
+split -C 100M smoke_detection.tar.gz
+
+二进制文件分割
+split -b 100M data.bak
+
+文件合并
+cat file1 file2 > file
+
+
