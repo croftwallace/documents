@@ -83,6 +83,18 @@ sudo apt-get remove python3-pip
 2、在打开的文件最后加上一句命令：conda deactivate
 3、重新打开终端即可消除base字样。
 
+查看所以用户组:
+cat /etc/group
+
+创建用户组:
+sudo groupadd docker
+
+将当前用户加到组中:
+sudo usermod -aG docker $USER
+
+linux下添加，删除，修改，查看用户和用户组
+http://blog.51yip.com/linux/1137.html
+
 
 #windows 后台运行jar
 javaw -jar xxx.jar

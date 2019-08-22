@@ -5,6 +5,14 @@
 git config --global user.name "croftwallace"
 git config --global user.email "croft_wallace@163.com"
 
+#取消git global 配置
+git config --global --unset user.name
+git config --global --unset user.email
+
+
+#查看当前配置
+git config --list 
+
 ###git 命令
 
 #git常见命令地址
