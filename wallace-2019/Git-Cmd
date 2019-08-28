@@ -41,6 +41,12 @@ git commit -m 'descript some change with you word'
 
 git push origin master //将本地提交的 推送到远程 master分支下，远程库是空时可加 -u
 
+#删除远程关联文件
+git remote remove origin
+
+#建立远程关联，也可是 ssh地址
+git remote add origin http://gitserver:3000/zhoukeng/ox-v2-message.git
+
 
 #把远程仓库clone到本地
 git clone git@*******.git
@@ -71,7 +77,7 @@ git branch -vv
 
 
 #删除github远程分支
-git push origin :[branch name]	
+git push origin :[branch name]	// origin 后面有个空格
 
 
 

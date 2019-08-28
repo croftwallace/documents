@@ -77,6 +77,10 @@ sudo pip3 install --upgrade pip
 卸载pip3
 sudo apt-get remove python3-pip
 
+#haven't properly installed the header files and static libraries for python dev
+sudo apt-get install python-dev   # for python2.x installs
+sudo apt-get install python3-dev  # for python3.x installs
+
 ## 安装anaconda后 永久取消base字样办法：
 
 1、在新终端中输入：gedit ～/.bashrc
@@ -94,6 +98,9 @@ sudo usermod -aG docker $USER
 
 linux下添加，删除，修改，查看用户和用户组
 http://blog.51yip.com/linux/1137.html
+
+ssh 说明
+https://www.bookstack.cn/read/linux-command/command-ssh-add.md
 
 
 #windows 后台运行jar
@@ -130,3 +137,43 @@ VP9: 开源视频压缩格式
 
 没有对应的key 返回null
 key-value 为 String:String 类型，空值无法为 null 对象
+
+
+
+
+***************************************docker***************************************
+Azure 中国镜像 https://dockerhub.azk8s.cn
+
+/etc/docker/daemon.json
+{
+  "registry-mirrors": [
+    "https://dockerhub.azk8s.cn",
+    "https://reg-mirror.qiniu.com"
+  ]
+}
+
+拉取镜像地址替换方式:
+# docker pull gcr.io/google_containers/hyperkube-amd64:v1.9.2
+
+docker pull gcr.azk8s.cn/google_containers/hyperkube-amd64:v1.9.2
+
+#以镜像为基础启动docker容器
+docker run -it --rm \
+    ubuntu:18.04 \
+    bash
+
+-it：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。
+--rm：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm。我们这里只是随便执行个命令，看看结果，不需要排障和保留结果，因此使用 --rm 可以避免浪费空间
+
+#列出部分镜像
+docker image ls ubuntu
+***************************************docker***************************************
+
+
+
+
+
+
+
+
+
