@@ -33,7 +33,9 @@ git remote add origin https://****.git  //将本地仓库关联到远程地址
 
 git pull --rebase origin master //将远程仓库中文件拉取下来
 
-git add * // 添加当前目录下所以文件
+git add * // 添加当前目录下所以文件 会忽略.gitignore把任何文件都加入
+
+git add . //修复 Changes not staged for commit 会把本地所有untrack的文件都加入暂存区，并且会根据.gitignore做过滤
 
 git add ab/  ab/  //添加当前目录 ab文件夹 远程也是 ab 文件夹
 
