@@ -39,7 +39,7 @@ git add . //修复 Changes not staged for commit 会把本地所有untrack的文
 
 git add ab/  ab/  //添加当前目录 ab文件夹 远程也是 ab 文件夹
 
-git commit -m 'descript some change with you word'
+git commit -m "descript some change with you word"
 
 git push origin master //将本地提交的 推送到远程 master分支下，远程库是空时可加 -u
 

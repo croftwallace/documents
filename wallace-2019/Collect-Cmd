@@ -31,6 +31,14 @@ docker run -it --rm \
     bash
 
 
+#播放器使用字幕文件时乱码:
+1. 字幕文件的编码需要调整
+2. 播放器的内置的使用的字体，不支持显示当前语言，需要调整
+
+
+#linux 下载edk2
+sudo apt install amule
+
 *****************dash 添加快速启动开始 *****************
 desktop修改位置: /usr/share/applications
 
@@ -109,6 +117,18 @@ ssh 说明
 https://www.bookstack.cn/read/linux-command/command-ssh-add.md
 
 
+#docker 安装运行 neo4j
+
+docker pull neo4j
+
+docker run \
+    --publish=7474:7474 --publish=7687:7687 \
+    --volume=$HOME/neo4j/data:/data \
+    neo4j
+
+#终端连接neo4j
+neo4j-client -u neo4j localhost 7687
+
 #windows 后台运行jar
 javaw -jar xxx.jar
 
@@ -145,7 +165,22 @@ VP9: 开源视频压缩格式
 key-value 为 String:String 类型，空值无法为 null 对象
 
 
+#redis的文件存放目录
+config get dir
 
+备份: save  
+
+
+dump.rdb 数据导入时，前提需要关闭redis 服务
+
+#关闭redis
+sudo systemctl stop redis
+
+
+#redis有两种持久化方式，Rdb 和 Aof
+
+#关闭redis进程
+pkill -9 redis 
 
 ***************************************docker***************************************
 Azure 中国镜像 https://dockerhub.azk8s.cn
