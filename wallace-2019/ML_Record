@@ -31,19 +31,60 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 Hopfield 网络是理论神经科学的一个模型，为分布式、内容可寻址的内存存储和检索提供了统一的框架，也启发了 Boltzmann 机的提出以及许多满足弱约束的分布作为 AI 计算模型的想法。
+
+
+#python 中索引从 0开始
+
+# numpy 数学工具库
+import numpy as np
+
+# matplotlib.pyplot 制作图表的库
+import matplotlib.pyplot as plt
+
+# pandas 导入数据集和管理数据集的库
+import pandas as pd
+
+# 交叉验证库  scikit-learn 安装时全名
+from sklearn.cross_validation import train_test_split
+
+
+#sklearn是机器学习中一个常用的python第三方模块，对常用的机器学习算法进行了封装，其中包括：
+1.分类（Classification）
+2.回归（Regression）
+3.聚类（Clustering）
+4.数据降维（Dimensionality reduction）
+5.常用模型（Model selection）
+6.数据预处理（Preprocessing）
+
+#sklearn自带了很多数据集，可以用来对算法进行测试分析，免去了自己再去找数据集的烦恼，其中包括：
+鸢尾花数据集:load_iris()
+手写数字数据集:load_digitals()
+糖尿病数据集:load_diabetes()
+乳腺癌数据集:load_breast_cancer()
+波士顿房价数据集:load_boston()
+体能训练数据集:load_linnerud()
+
+
+#过度学习，也称为过拟合，指在训练阶段
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
