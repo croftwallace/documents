@@ -36,6 +36,10 @@ Hopfield 网络是理论神经科学的一个模型，为分布式、内容可�
 
 #python 中索引从 0开始
 
+
+#anaconda中启动spyder
+在anaconda/bin目录下运行终端，输入./spyder即可启动
+
 # numpy 数学工具库
 import numpy as np
 
@@ -68,9 +72,13 @@ from sklearn.cross_validation import train_test_split
 
 #过度学习，也称为过拟合，指在训练阶段
 
+#LinearRegression 线性回归类
+#from sklearn.linear_model import LinearRegression
 
 
 
+#虚拟变量，也叫哑变量和离散特征编码
+可用来表示分类变量、非数量因素可能产生的影响
 
 
 
