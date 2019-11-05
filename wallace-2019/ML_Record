@@ -79,11 +79,39 @@ import statsmodels.api
 
 #过度学习，也称为过拟合，指在训练阶段
 
-#虚拟变量，也叫哑变量和离散特征编码
+#虚拟变量，也叫哑变量和离散特征编码，注意虚拟变量陷阱(完全多重共线性)...待理解
 可用来表示分类变量、非数量因素可能产生的影响,不应包含所有虚拟变量的列
+https://wiki.mbalib.com/wiki/虚拟变量陷阱
+https://zhuanlan.zhihu.com/p/26640957
+共线性=矩阵非满秩
+
+在模型中引入多个虚拟变量时，虚拟变量的个数应按下列原则确定：
+（1）如果回归模型有截距项
+有m种互斥的属性类型，在模型中引入（m-1）个虚拟变量。
+（2）如果回归模型无截距项，有m个特征，设置m个虚拟变量
 
 
+#Splitting the dataset into the Training set and Test set
+//cross_validatio sklearn v0.2 不在使用了，划分到了model_selection这个包中
+//from sklearn.cross_validation import train_test_split  
+from sklearn.model_selection import train_test_split
 
+
+# X特征矩阵一直被视为矩阵，不能是向量
+
+
+#SVM与logistic分类器类似，也是一种二类分类模型
+#SVR是SVM的一种运用，基本的思路是一致，有细微的区别。使用SVR作回归分析，与SVM一样，我们需要找到一个超平面
+#https://zhuanlan.zhihu.com/p/33692660  //相关介绍
+#SVR 可以选择不同内核
+'linear' //线性
+'poly',  //多项式
+'rbf',   //高斯
+'sigmoid', //
+'precomputed' 
+or a callable
+
+# 034 Dummy Variables
 
 
 
