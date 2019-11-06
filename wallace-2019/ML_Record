@@ -111,9 +111,15 @@ from sklearn.model_selection import train_test_split
 'precomputed' 
 or a callable
 
-# 034 Dummy Variables
+# Dummy Variables 034 课程编号
 
 
+
+# LogisticRegression 逻辑回归类 本质是线性的,二分类
+from sklearn.linear_model import LogisticRegression
+
+# KNeighborsClassifier 最临近算法类
+from sklearn.neighbors import KNeighborsClassifier
 
 
 
