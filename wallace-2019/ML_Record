@@ -101,7 +101,9 @@ from sklearn.model_selection import train_test_split
 
 
 #SVM与logistic分类器类似，也是一种二类分类模型
-#SVR是SVM的一种运用，基本的思路是一致，有细微的区别。使用SVR作回归分析，与SVM一样，我们需要找到一个超平面
+SVR是SVM的一种运用，基本的思路是一致，有细微的区别。使用SVR作回归分析，与SVM一样，我们需要找到一个超平面
+from sklearn.svm import SVR
+
 #https://zhuanlan.zhihu.com/p/33692660  //相关介绍
 #SVR 可以选择不同内核
 'linear' //线性
@@ -115,12 +117,14 @@ or a callable
 
 
 
-# LogisticRegression 逻辑回归类 本质是线性的,二分类
+# LogisticRegression 逻辑回归类 本质是线性的,二分类,分割两个类别
 from sklearn.linear_model import LogisticRegression
 
-# KNeighborsClassifier 最临近算法类
+# KNeighborsClassifier 最临近算法类  非线性
 from sklearn.neighbors import KNeighborsClassifier
 
+# SVC 是 SVM支持向量机的对象分类器
+from sklearn.svm import SVC
 
 
 

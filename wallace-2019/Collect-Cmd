@@ -2,6 +2,7 @@
 #快速锁屏:
 win+L
 
+https://url.cn/5GsGZdV
 
 #查看该端口被那个PID所占用
 netstat -ano|findstr "<端口号>"
