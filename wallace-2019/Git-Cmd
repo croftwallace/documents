@@ -1,7 +1,10 @@
 
+freetuts.download
+UpFile.info
+uptobox.coms
 #github的SSH配置如下：
 
-#设置Git的user name和email：
+#设置Git的user name和email:
 git config --global user.name "croftwallace"
 git config --global user.email "croft_wallace@163.com"
 

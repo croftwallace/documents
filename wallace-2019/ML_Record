@@ -127,6 +127,27 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 
 
+# regression & classification 回归和分类的区别
+分类: 目的 寻找决策边界 属于监督学习
+回归: 目的 找到最优拟合
+
+
+
+# Naive Bayes 天真的贝叶斯 (假设变量之间完全独立 没有关联)
+基础算法，应用于机器学习 (即使变量或特征不是独立或非独立，通常也会应用它，仍能提供良好效果)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
