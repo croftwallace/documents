@@ -49,6 +49,9 @@ import matplotlib.pyplot as plt
 # pandas 导入数据集和管理数据集的库
 import pandas as pd
 
+# Feature Scaling
+from sklearn.preprocessing import StandardScaler
+
 # 交叉验证库  scikit-learn 安装时全名
 from sklearn.cross_validation import train_test_split
 
@@ -68,9 +71,6 @@ from sklearn.cross_validation import train_test_split
 乳腺癌数据集:load_breast_cancer()
 波士顿房价数据集:load_boston()
 体能训练数据集:load_linnerud()
-
-#LinearRegression 线性回归类
-from sklearn.linear_model import LinearRegression
 
 
 #statsmodels 估算许多不同统计模型以及进行统计测试和统计数据探索
@@ -99,9 +99,13 @@ from sklearn.model_selection import train_test_split
 
 # X特征矩阵一直被视为矩阵，不能是向量
 
+--------------------------------------------回归--------------------------------------------
+
+#LinearRegression 线性回归类
+from sklearn.linear_model import LinearRegression
 
 #SVM与logistic分类器类似，也是一种二类分类模型
-SVR是SVM的一种运用，基本的思路是一致，有细微的区别。使用SVR作回归分析，与SVM一样，我们需要找到一个超平面
+SVR是SVM的一种运用，基本思路是一致，有细微的区别。使用SVR作回归分析，与SVM一样，我们需要找到一个超平面
 from sklearn.svm import SVR
 
 #https://zhuanlan.zhihu.com/p/33692660  //相关介绍
@@ -116,9 +120,9 @@ or a callable
 # Dummy Variables 034 课程编号
 
 
-
 # LogisticRegression 逻辑回归类 本质是线性的,二分类,分割两个类别
 from sklearn.linear_model import LogisticRegression
+
 
 # KNeighborsClassifier 最临近算法类  非线性
 from sklearn.neighbors import KNeighborsClassifier
@@ -126,6 +130,31 @@ from sklearn.neighbors import KNeighborsClassifier
 # SVC 是 SVM支持向量机的对象分类器
 from sklearn.svm import SVC
 
+# DecisionTreeClassifier 是决策树的类
+from sklearn.tree import DecisionTreeClassifier
+
+# RandomForestClassifier 是随机森林的类
+from sklearn.ensemble import RandomForestClassifier
+
+--------------------------------------------回归--------------------------------------------
+
+
+
+
+
+--------------------------------------------分类--------------------------------------------
+
+# KMeans 均值聚类
+from sklearn.cluster import KMeans
+
+
+# hierarchy 分层聚类的寻找最优分类数的 dendrogram 工具
+import scipy.cluster.hierarchy as sch
+
+# AgglomerativeClustering 聚合分层聚类
+from sklearn.cluster import AgglomerativeClustering
+
+--------------------------------------------分类--------------------------------------------
 
 # regression & classification 回归和分类的区别
 分类: 目的 寻找决策边界 属于监督学习
