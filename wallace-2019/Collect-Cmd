@@ -106,11 +106,20 @@ sudo apt-get remove python3-pip
 sudo apt-get install python-dev   # for python2.x installs
 sudo apt-get install python3-dev  # for python3.x installs
 
+
+# python 空 list 本身等同于 False
+
 ## 安装anaconda后 永久取消base字样办法：
 
 1、在新终端中输入：gedit ～/.bashrc
 2、在打开的文件最后加上一句命令：conda deactivate
 3、重新打开终端即可消除base字样。
+
+#conda 中安装操作redis的模块
+conda install -c anaconda redis-py
+
+#conda install xxx模块权限不够时
+anaconda文件夹改变权限，并添加-R更改所有子文件夹权限
 
 查看所以用户组:
 cat /etc/group
