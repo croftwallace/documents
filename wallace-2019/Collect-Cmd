@@ -119,7 +119,7 @@ sudo apt-get install python3-dev  # for python3.x installs
 conda install -c anaconda redis-py
 
 #conda install xxx模块权限不够时
-anaconda文件夹改变权限，并添加-R更改所有子文件夹权限
+anaconda文件夹改变权限，并添加-R更改所有子文件夹限
 
 查看所以用户组:
 cat /etc/group
