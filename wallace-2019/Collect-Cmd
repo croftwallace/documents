@@ -43,6 +43,17 @@ sudo apt install amule
 #下载python编辑器
 sudo apt install spyder3
 
+#Ubuntu下无法挂载Windows的NTFS磁盘的问题
+使用ntfsfix这个命令解决，在软件包ntfs-3g中，因此需要先安装此软件包：
+
+sudo apt-get installntfs-3g
+
+安装成功后，修复对应的ntfs分区（即错误中报出的分区名称）：
+
+sudo ntfsfix /dev/sda2
+
+
+
 
 Hbase和Hive在大数据架构中处在不同位置，
 Hbase主要解决实时数据查询问题，
@@ -115,11 +126,47 @@ sudo apt-get install python3-dev  # for python3.x installs
 2、在打开的文件最后加上一句命令：conda deactivate
 3、重新打开终端即可消除base字样。
 
+# anaconda导航界面启动
+anaconda-navigator
+
+# 升级anaconda版本
+conda update conda
+
 #conda 中安装操作redis的模块
 conda install -c anaconda redis-py
 
 #conda install xxx模块权限不够时
 anaconda文件夹改变权限，并添加-R更改所有子文件夹限
+
+# anaconda 创建指定python3.5环境 并包含 anaconda包
+conda creat -n chatbot python=3.5 anaconda
+
+# 激活环境
+conda activate chatbot 或者 source activate chatbot
+
+# 退出环境
+conda deactivate
+
+# 删除环境
+conda remove -n chatbot --all
+
+# 列出所以环境
+conda info --envs 或者 conda info -e
+
+# 卸载anaconda
+删除 anaconda对应的目录即可
+
+# conda安装包介绍
+当使用 conda install 无法进行安装时，可以考虑从http://Anaconda.org中获取安装包的命令，并进行安装
+
+# pip基本介绍
+pip只是包管理器，无法对环境进行管理。因此如果想在指定环境中使用pip进行安装包，则需要先切换到指定环境中，再使用pip命令安装包。
+pip无法更新python，因为pip并不将python视为包。
+pip可以安装一些conda无法安装的包；conda也可以安装一些pip无法安装的包。因此当使用一种命令无法安装包时，可以尝试用另一种命令
+
+# 增加spyder模块代码提示功能
+找到/home/pc314/anaconda3/envs/tensorflow/lib/python3.5/site-packages/spyder/utils/introspection打开module_completion.py拉到最后，然后看到mods，输入想要提示的模块
+
 
 查看所以用户组:
 cat /etc/group
