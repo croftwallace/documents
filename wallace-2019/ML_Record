@@ -166,13 +166,15 @@ from sklearn.cluster import AgglomerativeClustering
 基础算法，应用于机器学习 (即使变量或特征不是独立或非独立，通常也会应用它，仍能提供良好效果)
 
 
+# 运行chatbot
+python chat.py models/cornell_movie_dialog/trained_model_v1/best_weights_training.ckpt
 
 
 
-
-
-
-
+    
+    
+    
+    
 
 
 
