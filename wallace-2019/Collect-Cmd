@@ -118,6 +118,13 @@ sudo apt-get install python-dev   # for python2.x installs
 sudo apt-get install python3-dev  # for python3.x installs
 
 
+# distributed 1.21.8 requires msgpack, which is not installed.
+First Method: Run this command
+conda install -c anaconda msgpack-python
+Second Method: Run this command
+pip install msgpack
+
+
 # python 空 list 本身等同于 False
 
 ## 安装anaconda后 永久取消base字样办法：
@@ -139,7 +146,7 @@ conda install -c anaconda redis-py
 anaconda文件夹改变权限，并添加-R更改所有子文件夹限
 
 # anaconda 创建指定python3.5环境 并包含 anaconda包
-conda creat -n chatbot python=3.5 anaconda
+conda create -n chatbot python=3.5 anaconda
 
 # 激活环境
 conda activate chatbot 或者 source activate chatbot
@@ -149,7 +156,7 @@ conda deactivate
 
 # 删除环境
 conda remove -n chatbot --all
-
+pyt
 # 列出所以环境
 conda info --envs 或者 conda info -e
 
@@ -163,6 +170,12 @@ conda info --envs 或者 conda info -e
 cpu：pip install --upgrade --ignore-installed tensorflow==1.*
 gpu：pip install --upgrade --ignore-installed tensorflow-gpu==1.*
 
+
+# Tensorflow 安装超时
+pip install --index-url https://pypi.douban.com/simple tensorflow==1.15.0
+
+pip install --index-url http://mirrors.aliyun.com/pypi/simple tensorflow==1.15.0
+
 # pip基本介绍
 pip只是包管理器，无法对环境进行管理。因此如果想在指定环境中使用pip进行安装包，则需要先切换到指定环境中，再使用pip命令安装包。
 pip无法更新python，因为pip并不将python视为包。
@@ -170,6 +183,75 @@ pip可以安装一些conda无法安装的包；conda也可以安装一些pip无�
 
 # 增加spyder模块代码提示功能
 找到/home/wallace/anaconda3/envs/tensorflow/lib/python3.5/site-packages/spyder/utils/introspection打开module_completion.py拉到最后，然后看到mods，输入想要提示的模块
+
+
+# python 单双引号
+当你用单引号' '定义字符串的时候，它就会认为你字符串里面的双引号" "是普通字符，从而不需要转义。反之当你用双引号定义字符串的时候，就会认为你字符串里面的单引号是普通字符无需转义
+
+# python字符串替换 r代表了原字符串,不需要转义
+re.compile('item\\n')
+re.compile(r'item\n')
+
+
+# python中的类型
+https://www.jianshu.com/p/bc57ad6f35c4
+ 整型 int
+· 浮点型 float
+· 字符串型 str
+· 列表list
+· 元组tuple
+· 字典dict
+· 集合set
+
+# python 字典转换
+import json
+JSON到字典转化：
+ret_dict = json.loads(json_str)
+字典到JSON转化：
+json_str = json.dumps(dict)
+
+# python sorted set 添加数据
+mkey = 'qxy:msgRecord:S0000003:13551472168:2019-10-25'      
+data = {"chatType": 2, "createTime": 1571996333208, "msgType": 0, "extras": {"toPlate": "S0000003"}, "group_id": "", "cmd": 11, "to": "13551472168", "from": "S0000003", "content": "在的"}
+rds.zadd(mkey, {json.dumps(data, ensure_ascii = False):2})
+
+
+# NodeSelector 没有找到  py2neo的版本问题
+pip install git+https://github.com/nigelsmall/py2neo.git#egg=py2neo
+
+
+# python（spyder）的快捷键
+选中多行后：　
+Ctrl + 1: 注释/反注释
+Ctrl + 4: 块注释
+
+
+# Neo4j支持三种网络协议（Protocol）
+Bolt: 7687
+HTTP: 7474
+HTTPS: 7473
+
+# neo4j 较适合场景
+优点: 快速解决复杂的关系问题
+社交网络
+交通大数据（物流）
+推荐系统
+欺诈分析
+Web 安全（垃圾邮件等等）
+
+# neo4j 不适合的领域。
+
+记录大量基于事件的数据
+需要大规模分布式数据处理
+二进制数据存储
+适合保存在关系型数据的结构化数据
+
+
+# 商品推荐数据建模，简单示例
+customer只有customerid, name
+order顶点只要orderid， ordertime
+product顶点只有productid， name。
+ordered/contains边暂时不需要额外属性字段，
 
 
 查看所以用户组:
@@ -197,8 +279,19 @@ docker run \
     --volume=$HOME/neo4j/data:/data \
     neo4j
 
-#终端连接neo4j
+# 终端连接neo4j
 neo4j-client -u neo4j localhost 7687
+
+# neo4j 修改密码
+进入neo4j提供的可视化界面
+输入： :server change-password
+
+
+
+# python 安装 neo4j 的库
+pip install py2neo
+
+
 
 #windows 后台运行jar
 javaw -jar xxx.jar
@@ -332,7 +425,9 @@ docker image ls ubuntu
 
 
 
-
+# 嵌入式数据库和数据库服务器的区别
+嵌入式数据库不需要数据库驱动程序，直接将数据库的库文件链接到应用程序中
+数据库服务器的架构 通常通过数据库驱动程序如JDBC、ODBC等访问数据库服务器，数据库服务器再操作数据库文件
 
 
 

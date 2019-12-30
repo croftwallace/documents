@@ -1,0 +1,19 @@
+
+
+drwxr-xr-x   4 wallace wallace  4096 12月 11 10:41 Desktop
+
+pwd: 打印当前位置，绝对路径
+
+cd -  :回到上个位置
+
+# A Stack To Push Folders,在多层目录间往返
+pushd: 进入堆栈的下个目录
+popd: 弹出到堆栈上层目录
+
+file: 检查文件类型,不能放文件夹类型, file ***.jpg
+
+locate: 查找文件,不能模糊查找(名字带*),但是可以写部分名称
+sudo updatedb: 更新locate数据库
+
+
+
