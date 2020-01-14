@@ -12,8 +12,60 @@ popd: 弹出到堆栈上层目录
 
 file: 检查文件类型,不能放文件夹类型, file ***.jpg
 
-locate: 查找文件,不能模糊查找(名字带*),但是可以写部分名称
+
+locate: 列出相关所有路径,不能模糊查找(名字带*),但是可以写部分名称, locate readme 
 sudo updatedb: 更新locate数据库
+
+
+which: Find A Command (which)   which pip
+
+
+history: Show Command History (history)
+
+whatis: Show Manual Descriptions (whatis)  whatis history
+
+
+apropos: Search Manual (apropos) 查找相关的命令   apropos ssh 
+
+man: Reference Manuals (man)  man ls
+
+
+mkdir: Creating A Folder (mkdir)
+touch: Creating A File (touch)
+
+rmdir: Delete Empty Folder (rmdir)
+
+
+
+more/less: File Perusal Filter (moreless)
+
+
+users: 展示所有用户
+
+sudo -s: 超级管理员
+
+su - : 切换用户  su - test
+
+logout: 注销当前用户
+
+id: 查看当前用户的唯一信息
+
+
+find / -name test : 在 / 目录下找test 目录文件 
+
+
+cat /etc/passwd : 查看用户
+cat /etc/group : 查看用户组
+
+killall vlc: 通过名称关掉vlc
+
+
+ctrl + e: terminal 终端光标移动到末尾
+ctrl + a: terminal 终端光标移动到开头
+ctrl + left/right: terminal 终端光标移动向左或向右移动一个目录名称
+
+
+
 
 
 

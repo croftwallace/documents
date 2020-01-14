@@ -166,6 +166,13 @@ conda info --envs 或者 conda info -e
 # conda安装包介绍
 当使用 conda install 无法进行安装时，可以考虑从http://Anaconda.org中获取安装包的命令，并进行安装
 
+
+$ Linux下对文件进行md5校验命令
+md5sum 文件名
+md5sum文件会在文件的最后增加一个'\n'，再进行md5运算。
+同理，用echo "password" |md5sum生成的结果也是一样，因为echo也是在最后增加了一个"\n"。
+所以使用md5sum加密字符串的时候应该避免这个问题，要echo -n "passwd"|md5sum, -n代表不输出'\n'符。
+
 # TensorFlow版本升级
 cpu：pip install --upgrade --ignore-installed tensorflow==1.*
 gpu：pip install --upgrade --ignore-installed tensorflow-gpu==1.*
@@ -253,6 +260,9 @@ order顶点只要orderid， ordertime
 product顶点只有productid， name。
 ordered/contains边暂时不需要额外属性字段，
 
+sudo dpkg-reconfigure wireshark-common
+
+sudo usermod -a -G wireshark $USER
 
 查看所以用户组:
 cat /etc/group
