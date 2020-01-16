@@ -333,6 +333,31 @@ ffmpeg -i input.mp4 -ss 00:00:2 -t 10 -r 1 -q:v 2 -f image2 pic-%03d.jpeg
 VP9: 开源视频压缩格式
 
 
+# 列出已经安装的snap包
+sudo snap list
+
+# 搜索要安装的snap包
+sudo snap find <text to search>
+
+# 安装一个snap包
+sudo snap install <snap name>
+
+# 更新一个snap包，如果你后面不加包的名字的话那就是更新所有的snap包
+sudo snap refresh <snap name>
+
+# 把一个包还原到以前安装的版本
+sudo snap revert <snap name>
+
+# 删除一个snap包
+sudo snap remove <snap name>
+
+# 查询最近做的操作
+snap changes
+
+# 关于snap更多信息，查看man手册：
+man snap
+
+
 ***************************************Redis 相关***************************************
 
 没有对应的key 返回null
@@ -355,6 +380,8 @@ sudo systemctl stop redis
 
 #关闭redis进程
 pkill -9 redis 
+
+
 
 ***************************************docker***************************************
 Azure 中国镜像 https://dockerhub.azk8s.cn

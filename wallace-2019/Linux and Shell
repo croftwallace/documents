@@ -65,6 +65,11 @@ ctrl + a: terminal 终端光标移动到开头
 ctrl + left/right: terminal 终端光标移动向左或向右移动一个目录名称
 
 
+cp/mv *.jpg ~ : 拷贝或移动当前目录下后缀为jpg 的到home目录
+cp/mv {*.jpg, *.png} ~ : 拷贝或移动当前目录下后缀为jpg和png的到home目录
+
+
+cd ~; ls; pwd : 多个命令同时使用
 
 
 
