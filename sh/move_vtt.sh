@@ -12,11 +12,11 @@ base=$(cd `dirname $0`; pwd)
 # 找到当前目录下的文件夹
 for d in `find . -type d`; do
     echo $d
-    # cd $base
-    # cd $d
-    # #如果文件夹不存在，创建文件夹
-    # if [ ! -d "en" ]; then
-    #     mkdir en
-    #     mv *.vtt ./en
-    # fi
+    cd $base
+    cd $d
+    #如果文件夹不存在，创建文件夹
+    if [ ! -d "en" ]; then
+        mkdir en
+        mv *.vtt ./en
+    fi
 done

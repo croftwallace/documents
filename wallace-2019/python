@@ -1,0 +1,32 @@
+
+# 判断内容是什么类型
+type(content)
+
+
+# 判断字符串是什么类型
+str为字符串
+1、str.isalnum() 所有字符都是数字或者字母
+2、str.isalpha() 所有字符都是字母
+3、str.isdigit() 所有字符都是数字
+4、str.islower() 所有字符都是小写
+5、str.isupper() 所有字符都是大写
+6、str.istitle() 所有单词都是首字母大写
+7、str.isspace() 所有字符都是空白字符、\t、\n、\r
+
+# Python中如何将文件保存为utf-8（带BOM）的格式
+f = codecs.open('ufile.log', 'w', "UTF-8")
+
+# Python中如何将文件保存为utf-8无BOM
+f = codecs.open('ufile.log', 'w', 'utf_8_sig')
+
+
+
+# 字幕文件带BOM的拖动进度条后字幕会无法显示
+
+
+
+
+
+
+
+

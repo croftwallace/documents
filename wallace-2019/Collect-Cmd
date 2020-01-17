@@ -37,6 +37,19 @@ docker run -it --rm \
 2. 播放器的内置的使用的字体，不支持显示当前语言，需要调整
 
 
+# 浅谈Windows下的CRLF(\r\n)在Linux系统下带来的问题
+http://www.51cos.com/?p=1595
+
+# smplayer 安装
+sudo apt-get install mplayer
+sudo apt-get install mpv
+https://www.cnblogs.com/xiaolongdejia/p/10973190.html
+
+sudo apt-add-repository ppa:rvm/smplayer
+sudo apt-get update
+sudo apt-get install smplayer smplayer-skins smplayer-themes
+
+
 #linux 下载edk2
 sudo apt install amule
 
