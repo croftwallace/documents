@@ -10,6 +10,9 @@ Root password: Kp0ZWG1Tes
 cpzbrzyrbghmjeje
 nigmucpjqtuzjejj
 
+#moon 节点
+ea70a10353
+
 https://documenter.getpostman.com/view/6935543/SW7bzmLp?version=latest#88ba91c1-0eee-4573-b83c-2d5396d53466
 
 #github的SSH配置如下：
@@ -44,7 +47,7 @@ git init //git初始化当前目录
 
 git remote add origin https://****.git  //将本地仓库关联到远程地址 
 
-git pull --rebase origin master //将远程仓库中文件拉取下来
+git pull --rebase origin master //将远程仓库中文件拉取下来 与远程代码同步，同步过程会检查冲突，
 
 git add * // 添加当前目录下所以文件 会忽略.gitignore把任何文件都加入
 
@@ -55,6 +58,28 @@ git add ab/  ab/  //添加当前目录 ab文件夹 远程也是 ab 文件夹
 git commit -m "descript some change with you word"
 
 git push origin master //将本地提交的 推送到远程 master分支下，远程库是空时可加 -u
+
+
+git pull --rebase
+git pull的默认行为是git fetch + git merge
+git pull --rebase则是git fetch + git rebase.
+
+git fetch  //从远程获取最新版本到本地，不会自动合并分支
+
+git rebase //顾名思义，就是重新定义（re）起点（base）的作用，即重新定义分支的版本库状态。
+
+git rebase --abort 会放弃合并，回到rebase操作之前的状态，之前的提交的不会丢弃；完全撤消变基。 Git 将您恢复为分支状态如同调用 git rebase 之前一样。
+git rebase --skip 则会将引起冲突的commits丢弃掉，自己对文件的commit无效，开发者自己修改的部分全部无效，（慎用！！）；
+git rebase --continue 合并冲突，结合"git add 文件"命令一起用与修复冲突，提示开发者，一步一步地有没有解决冲突。
+
+
+
+执行完git pull --rebase 之后，本地如果产生冲突，手动解决冲突之后，用"git add"命令去更新这些内容的索引(index)，然后只要执行:
+git rebase --continue 就可以线性的连接本地分支与远程分支，无误之后就回退出，回到主分支上。
+注意：一般情况下，修改后检查没问题，使用rebase continue来合并冲突。
+
+您可以解决冲突。
+要解决冲突，可以按照从命令行解决合并冲突的标准过程操作。 完成后，您需要调用 git rebase --continue 以便 Git 继续处理变基的其余部分。
 
 #删除远程关联文件
 git remote remove origin

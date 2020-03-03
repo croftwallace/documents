@@ -14,16 +14,6 @@ for d in `find . -type d`; do
     echo $d
     cd $base
     cd $d
-    for f in `find *.srt -type f`; do
-        echo '-->' >> $f
-    done
-    #如果文件夹不存在，创建文件夹
-    if [ ! -d "en" ]; then
-        mkdir en
-        #mv *.vtt ./en
-        mv *.srt ./en
-    fi
+    rm *.zh.vtt
 done
-cd $base
-rm -r ./en
-echo 'move finished'
+echo 'remove finished'

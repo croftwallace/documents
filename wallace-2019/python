@@ -13,15 +13,29 @@ str为字符串
 6、str.istitle() 所有单词都是首字母大写
 7、str.isspace() 所有字符都是空白字符、\t、\n、\r
 
-# Python中如何将文件保存为utf-8（带BOM）的格式
+# Python中如何将文件保存为utf-8无BOM
 f = codecs.open('ufile.log', 'w', "UTF-8")
 
-# Python中如何将文件保存为utf-8无BOM
+# Python中如何将文件保存为utf-8（带BOM）的格式
 f = codecs.open('ufile.log', 'w', 'utf_8_sig')
 
+# python '''  三引号
+python三引号允许一个字符串跨多行，字符串中可以包含换行符、制表符以及其他特殊字符
+三引号让程序员从引号和特殊字符串的泥潭里面解脱出来，自始至终保持一小块字符串的格式是所谓的WYSIWYG（所见即所得）格式的
 
 
-# 字幕文件带BOM的拖动进度条后字幕会无法显示
+# python 判断参数为Nonetype类型或空
+if oneString == "":
+	print "empty"
+
+if hostip is None:
+       print "no hostip,is nonetype"
+elif hostip:
+       print "hostip is not null"  
+else:
+       print " hostip is null"
+
+
 
 
 

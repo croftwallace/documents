@@ -325,6 +325,11 @@ java -jar xxx.jar &
 #notepad 操作多行，alt+拖动 选中多行，同时操作
 
 
+# JOE 文体编辑器JOE 是GPL下发布的一个轻量级的基于终端的文本编辑器。JOE 是一款少有的支持大文件的文本编辑器,可以打开和编辑比物理内存大的文件
+sudo apt-get install joe
+https://zhuanlan.zhihu.com/p/48787309
+
+
 maven 发布jar到仓库:
 
 mvn deploy:deploy-file -DgroupId="com.qixiang.ox" -DartifactId=ox-im-contract -Dversion="1.0.0" -Dpackaging=jar  -Dfile=D:\softspace\java\projects\j-im\ox-im-contract\target\ox-im-contract-1.0.0-SNAPSHOT.jar -Durl=http://192.168.1.232:3001/repository/qixiang_ox -DrepositoryId=qixiangmaven
