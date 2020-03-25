@@ -32,6 +32,13 @@ docker run -it --rm \
     bash
 
 
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -它是单行命令，需要一起运行，除非Ansible提供了一种单独运行它们的方法。
+
+curl ....  从指定的uri获取内容
+| 获取一个命令的输出（在这种情况下为curl），然后将其运行到另一个命令的输入（以下为一个）
+apt-key add - 添加包密钥
+
+
 #播放器使用字幕文件时乱码:
 1. 字幕文件的编码需要调整
 2. 播放器的内置的使用的字体，不支持显示当前语言，需要调整
@@ -346,6 +353,8 @@ ffmpeg -i Game.Of.Thrones.S03E05.Kissed.By.Fire.1080p.BluRay.DTS-HD.MA.5.1.x264-
 ffmpeg -i input.mp4 -i logo.jpg -filter_complex overlay output_1.mp4
 
 ffmpeg -i input.mp4 -ss 00:00:2 -t 10 -r 1 -q:v 2 -f image2 pic-%03d.jpeg
+
+ffmpeg -y -i test.mp4 -ac "1" -ar "16000" -loglevel "error" test.wav
 
 
 VP9: 开源视频压缩格式

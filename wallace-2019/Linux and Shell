@@ -79,7 +79,25 @@ echo 'add content'>>/home/data/test.sh  注意：>> 是追加echo后边用单引
 
 echo 'add content'>/home/data/test.sh	注意：> 是删除原有内容，添加
 
+#查看磁盘文件系统
+df -l
 
+# 卸载挂载点
+umount /***/***  
+
+
+# 查看当前使用的内核
+uname -r
+
+
+# 遇到依赖问题，尝试使用下面命令修复
+sudo apt-get -f install  
+
+# 查看路由列表
+netstat -rn
+
+# 追踪到达目的地经过哪些路由
+traceroute 8.8.8.8
 
 
 
