@@ -91,13 +91,29 @@ uname -r
 
 
 # 遇到依赖问题，尝试使用下面命令修复
-sudo apt-get -f install  
+sudo apt-get -f install
 
 # 查看路由列表
 netstat -rn
 
 # 追踪到达目的地经过哪些路由
 traceroute 8.8.8.8
+
+# 查看存储的解析地址
+arp -a
+
+# 安装 卸载 Deb 包文件
+sudo apt-get install  要安装的软件包名
+sudo apt-get autoremove  要移除的软件包名
+
+# 要安装 .deb 套件包时
+sudo dpkg -i package_file.deb
+
+# 要反安装 .deb 套件包时
+sudo dpkg -r package_name
+
+
+
 
 
 

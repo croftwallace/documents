@@ -316,12 +316,12 @@ neo4j-client -u neo4j localhost 7687
 进入neo4j提供的可视化界面
 输入： :server change-password
 
-
-
 # python 安装 neo4j 的库
 pip install py2neo
 
 
+# Border Gateway Protocol: bgp 边界网关协议 一种距离向量路由协议
+# Address Resolution Protocol: arp 地址解析协议
 
 #windows 后台运行jar
 javaw -jar xxx.jar
@@ -399,14 +399,16 @@ config get dir
 
 dump.rdb 数据导入时，前提需要关闭redis 服务
 
-#关闭redis
-sudo systemctl stop redis
+#关闭redis进程
+pkill -9 redis 
+
+# 按配置文件启动redis
+sudo redis-server /etc/redis/6380.conf
 
 
 #redis有两种持久化方式，Rdb 和 Aof
 
-#关闭redis进程
-pkill -9 redis 
+
 
 
 
