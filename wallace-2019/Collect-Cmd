@@ -357,6 +357,9 @@ ffmpeg -i input.mp4 -ss 00:00:2 -t 10 -r 1 -q:v 2 -f image2 pic-%03d.jpeg
 ffmpeg -y -i test.mp4 -ac "1" -ar "16000" -loglevel "error" test.wav
 
 
+autosub -S en -D en -i test.mp4
+
+
 VP9: 开源视频压缩格式
 
 
