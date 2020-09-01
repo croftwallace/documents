@@ -56,6 +56,9 @@ sudo apt-add-repository ppa:rvm/smplayer
 sudo apt-get update
 sudo apt-get install smplayer smplayer-skins smplayer-themes
 
+# smplayer快捷键
+https://www.cnblogs.com/bkylee/p/6795295.html
+
 
 #linux 下载edk2
 sudo apt install amule
@@ -144,6 +147,8 @@ conda install -c anaconda msgpack-python
 Second Method: Run this command
 pip install msgpack
 
+# 显示包的位置
+pip show <package>  
 
 # python 空 list 本身等同于 False
 
@@ -152,6 +157,9 @@ pip install msgpack
 1、在新终端中输入：gedit ～/.bashrc
 2、在打开的文件最后加上一句命令：conda deactivate
 3、重新打开终端即可消除base字样。
+
+# anaconda导航界面安装
+conda install anaconda-navigator
 
 # anaconda导航界面启动
 anaconda-navigator
@@ -186,6 +194,18 @@ conda info --envs 或者 conda info -e
 # conda安装包介绍
 当使用 conda install 无法进行安装时，可以考虑从http://Anaconda.org中获取安装包的命令，并进行安装
 
+# 更新Anaconda
+conda update conda
+
+#更新包：注意是两个横线“-”
+conda update --all
+
+# 更新最新版本的anaconda-navigator
+conda update anaconda-navigator
+
+#  conda 安装 kivy
+conda install kivy -c conda-forge
+
 
 $ Linux下对文件进行md5校验命令
 md5sum 文件名
@@ -207,6 +227,9 @@ pip install --index-url http://mirrors.aliyun.com/pypi/simple tensorflow==1.15.
 pip只是包管理器，无法对环境进行管理。因此如果想在指定环境中使用pip进行安装包，则需要先切换到指定环境中，再使用pip命令安装包。
 pip无法更新python，因为pip并不将python视为包。
 pip可以安装一些conda无法安装的包；conda也可以安装一些pip无法安装的包。因此当使用一种命令无法安装包时，可以尝试用另一种命令
+
+# pip更新包的版本
+pip3 install --upgrade <package>
 
 # 增加spyder模块代码提示功能
 找到/home/wallace/anaconda3/envs/tensorflow/lib/python3.5/site-packages/spyder/utils/introspection打开module_completion.py拉到最后，然后看到mods，输入想要提示的模块

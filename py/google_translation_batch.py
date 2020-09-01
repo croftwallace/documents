@@ -194,9 +194,10 @@ for file in subtitle_list:
     translate_file.write(pre_cnt)
     i =0
     for cnt in translation.split('\n'):
-        translate_file.write(timstamp[i])
+        if i <= len(timstamp)-1:
+            translate_file.write(timstamp[i])
+            i += 1
         translate_file.write(cnt)
-        i += 1
 
         # count += 1
         # print('complete', '%.1f%%' % ((count/len(trasnlation_list))*100))
