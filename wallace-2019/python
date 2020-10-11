@@ -1,4 +1,7 @@
 
+### python中文手册地址： https://docs.python.org/zh-cn/3/library
+
+
 # 判断内容是什么类型
 type(content)
 
@@ -37,8 +40,11 @@ else:
 
 
 
-
-
+# argparse
+. https://docs.python.org/zh-cn/3/library/argparse.html?highlight=argparse#module-argparse
+. 创建解析器: parser = argparse.ArgumentParser(description='Process some integers.')
+. 添加参数: parser.add_argument('--path', type=str, dest='path', help='file path', required=True)
+. 解析参数: parser.parse_args()
 
 
 

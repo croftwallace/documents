@@ -26,7 +26,10 @@ https://blog.csdn.net/qq_39709535/article/details/80803003
 # map()函数和lambda表达式
 https://blog.csdn.net/u013944212/article/details/55095687
 https://www.runoob.com/python/python-func-map.html
+map  Python 2.x 返回列表  Python 3.x 返回迭代器
 
+# python 列表与迭代器的区别
+https://www.jianshu.com/p/1319018dde31
 
 # torch.nn.functional中softmax的作用及其参数说明
 https://www.cnblogs.com/wanghui-garcia/p/10675588.html
