@@ -127,6 +127,7 @@ server {
 #查看该PID对应的进程名称
 tasklist|findstr “<PID号>”
 
+
 安装pip3
 sudo apt-get install python3-pip
  
@@ -135,6 +136,13 @@ sudo pip3 install --upgrade pip
 
 卸载pip3
 sudo apt-get remove python3-pip
+
+# pip安装包
+. 使用pip install -U *** 时，它会尝试升级所有软件包，甚至在没有新版本可用时卸载并重新安装相同版本的依赖软件包
+. 安装新软件包而不升级已安装的软件包：pip install（不含-U）
+. 仅根据要求升级过时的软件包：pip install --upgrade --upgrade-strategy only-if-needed（新版本中的默认值）
+. 将软件包和所有依赖项升级到最新版本：pip install --upgrade --upgrade-strategy eager（旧版本中的默认值）
+. 安装或升级列出的软件包而不涉及依赖项： - no-deps
 
 #haven't properly installed the header files and static libraries for python dev
 sudo apt-get install python-dev   # for python2.x installs
@@ -174,7 +182,7 @@ conda install -c anaconda redis-py
 anaconda文件夹改变权限，并添加-R更改所有子文件夹限
 
 # anaconda 创建指定python3.5环境 并包含 anaconda包
-conda create -n chatbot python=3.5 anaconda
+conda create -n chatbot python=3 anaconda
 
 # 激活环境
 conda activate chatbot 或者 source activate chatbot
@@ -380,6 +388,12 @@ ffmpeg -i input.mp4 -ss 00:00:2 -t 10 -r 1 -q:v 2 -f image2 pic-%03d.jpeg
 ffmpeg -y -i test.mp4 -ac "1" -ar "16000" -loglevel "error" test.wav
 
 
+# 安装autosub
+. 从alpa分支安装如果出现 cannot import name 'enums' from 'google.cloud.speech_v1p1beta1' 错误
+  则安装包 pip install google-cloud-speech==1.3.1
+. https://github.com/BingLingGroup/autosub/blob/dev/docs/README.zh-Hans.md#%E7%BF%BB%E8%AF%91%E5%AD%97%E5%B9%95
+
+# 视频提取音频转文字
 autosub -S en -D en -i test.mp4
 
 

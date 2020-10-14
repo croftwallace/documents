@@ -46,6 +46,11 @@ else:
 . 添加参数: parser.add_argument('--path', type=str, dest='path', help='file path', required=True)
 . 解析参数: parser.parse_args()
 
+# 安装python3后使用pip和pip3的区别
+. 其实这两个命令效果是一样的，没有区别
+. 是当一台电脑同时有多个版本的Python的时候，用pip3就可以自动区分用Python3来安装库。是为了避免和Python2发生冲突
+. 电脑只安装了Python3，那么不管用pip还是pip3都一样的
+. 
 
 
 
