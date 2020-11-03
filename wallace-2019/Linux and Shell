@@ -123,6 +123,9 @@ sudo dpkg -r package_name
 . 清除式卸载：apt-get purge (同上，也清除配置文件)
 
 
+# 使用fuser来杀死所有已挂载的文件系统进程
+fuser -cuk /mnt
+
 
 
 
