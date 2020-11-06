@@ -127,7 +127,13 @@ sudo dpkg -r package_name
 fuser -cuk /mnt
 
 
+# 查看内存使用情况
+. free -m
 
+
+# 启用系统的过量使用处理模式
+. root身份运行 echo 1 > /proc/sys/vm/overcommit_memory
+. 默认是 0
 
 
 

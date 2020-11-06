@@ -1,0 +1,83 @@
+
+
+search_key:459
+image_index: 图像特征索引  TODO
+file_index:{1030: 'dataset/bottle/2008_005812.jpg', 1031: 'dataset/bottle/2008_007394.jpg',.....}
+
+
+解决image_index 未提前构建特征情况
+
+图像先用 inputs = preprocess_input(images) 处理
+再 images_features = model.predict(inputs) 生成图像特征
+
+
+vector_search.py 
+这样相当于重新再索引一遍所有图片，而实际需要添加最新的搜索图像的索引
+images = np.zeros(shape=(len(image_paths), 224, 224, 3))   line75 
+
+
+
+def save_features(), 需要看是否是增量式添加图像索引
+目前.npy 保存图像特征 暂时没找到追加新的图像特征到文件中，会导致数据的维度方面结构变化，与之前生成的.npy特征数据结构不同
+
+用Python之Numpy数组拼接，组合，连接 可以解决特征数据拼接在一起
+https://www.cnblogs.com/huangshiyu13/p/6672828.html
+
+. HDF5 文件来存储 较大的可以用这个
+
+
+def index_features()
+vector_search.py  line 158
+搜索是根据 Annoy建立图像特征的索引，结构是二叉树形式，找出十个距离目标最近的图像特征对应的索引
+
+现在需要知道根据特征构建的索引的规律，直接numpy拼接的特征似乎和一开始直接生成的所有特征的构建的方式不同？
+
+已建索引情况和新添加索引情况 把搜索的同一张图像的特征打印出来， 对比是否一样， 可能是构建的二叉树的地方不同，邻近节点不同返回的数据差异较大
+
+生成特征时有索引，但是拼接新的特征时没有按照对应位置拼接， 搜索图像按照索引来搜的
+
+
+# 10万张图像生成索引时错误
+Traceback (most recent call last):
+  File "search.py", line 162, in <module>
+    generate_features(index_folder, features_path, file_mapping, loaded_model, features_from_new_model_boolean, glove_path)
+  File "search.py", line 81, in generate_features
+    glove_path)
+  File "search.py", line 61, in index_images
+    use_word_vectors=features_from_new_model_boolean)
+  File "/home/wallace/softspace/play/semantic-search/utils.py", line 35, in load_paired_img_wrd
+    img_data = np.array(image_list)
+numpy.core._exceptions.MemoryError: Unable to allocate array with shape (66166, 1, 224, 224, 3) and data type float32
+
+
+. 系统内存模式改为允许过载能解决不超过最大系统内存的错误
+
+
+
+# 6.6万张图像的索引和特征
+. 特征约1.1G mmap_node='r' 读取时间约 0.0004s， 反之约 0.3s
+. 构建图像索引约 5s
+
+# Annoy小结
+. 由Spotify开发贡献
+. Written by C++
+. Language interface:python,C++
+. 基于mmap(内存映射文件和设备，具体见:https://en.wikipedia.org/wiki/Mmap)
+. 多个线程共享data index files
+. 无法动态添加数据
+. 距离的度量：欧式距离，曼哈顿距离，余弦距离，汉明距离，內积距离
+. 向量的item-id只接受非负数，如果自己的数据不符合要求需要自己维护一份映射。
+
+# KD树查找
+. flann
+. nanoflann
+. annoy
+
+# milvus 解决方案
+https://github.com/milvus-io/pymilvus/tree/0.3.0
+
+
+[[59668, '/home/wallace/images/spu/20181218/1df111cddf9843039925812e80c3cf08.jpg', 6.188937550177798e-05], [66165, '/home/wallace/images/spu/search/1df111cddf9843039925812e80c3cf08.jpg', 0.0002035147772403434], [59718, '/home/wallace/images/spu/20181218/2cbb5c430ab3494fb65aae888af9d862.jpg', 0.5136479139328003], [59914, '/home/wallace/images/spu/20181218/607bdd8eb7db41779a7b3ae60ff339c8.jpg', 0.6676925420761108], [59585, '/home/wallace/images/spu/20181218/0a5c92bac0f7496f80a6368a651ecf2d.jpg', 0.791955292224884], [59695, '/home/wallace/images/spu/20181218/26b4363d1c22490b8aaf8fb0a8866279.jpg', 0.8208613395690918], [51306, '/home/wallace/images/spu/20181206/16f70deb2c1c4a0bb5c6e58e7d7ba694.png', 0.830549955368042], [42357, '/home/wallace/images/spu/20181102/c67a8a3e0f354441a6d75a2092e2dd1c.jpg', 0.8532431125640869], [28481, '/home/wallace/images/spu/20181031/87323108fdab4b50b1afa6051beb7b6f.jpg', 0.859616219997406], [58736, '/home/wallace/images/spu/20181217/575d85726a82410987751ebf9ac55c8d.jpg', 0.8695785403251648]]
+
+
+

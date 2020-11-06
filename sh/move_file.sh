@@ -6,8 +6,6 @@ base=$(cd `dirname $0`; pwd)
 for d in `find . -type d`; do
     #echo $d
     cd $base
-    #cd $d
-    #mv *.png *.PNG *.gif *.JPG *.jpg *.jpeg *.JPEG ../
     name=$d
     len=${#name}
     #echo $name

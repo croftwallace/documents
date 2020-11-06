@@ -122,7 +122,9 @@ with open('data.json', 'r') as f:
 
 
 
-
+# Annoy距离的计算
+. a = AnnoyIndex(3, 'euclidean')   欧几里德距离
+. b = AnnoyIndex(3 ,'angular')	 角距离
 
 
 
