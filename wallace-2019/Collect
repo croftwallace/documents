@@ -7,6 +7,16 @@ https://url.cn/5GsGZdV
 #查看该端口被那个PID所占用
 netstat -ano|findstr "<端口号>"
 
+
+# 页面心得
+. 不要取看得见的信息做后台交互逻辑
+. 即使与后台交互信息和页面显示信息相同，也把这个信息拷贝一份隐藏在不显示的地方，以此来做交互
+
+
+# 查找问题步骤
+. 先尽量自己处理，确定具体问题点
+. 在google搜索问题点的解决方案
+
 #ubuntu 新建文件夹快捷键
 Ctrl Shift n
 
@@ -137,6 +147,8 @@ sudo pip3 install --upgrade pip
 卸载pip3
 sudo apt-get remove python3-pip
 
+pip install wrapt --upgrade --ignore-installed
+
 # pip安装包
 . 使用pip install -U *** 时，它会尝试升级所有软件包，甚至在没有新版本可用时卸载并重新安装相同版本的依赖软件包
 . 安装新软件包而不升级已安装的软件包：pip install（不含-U）
@@ -160,6 +172,17 @@ pip show <package>
 
 # python 空 list 本身等同于 False
 
+# maven 安装配置
+. sudo apt install maven
+. 在 /usr/share/maven/conf 路径下配置setting.xml文件
+
+# unbuntu firefox cpu占用过高
+ https://askubuntu.com/questions/326281/firefox-use-lot-of-cpu
+ 打开Firefox。
+ 在地址栏中输入“ about：Config”，然后点击执行或返回。这将带您进入Firefox专家配置菜单。
+ dom.ipc.plugins.asyncdrawing.enabled
+ 
+
 ## 安装anaconda后 永久取消base字样办法：
 
 1、在新终端中输入：gedit ～/.bashrc
@@ -181,8 +204,8 @@ conda install -c anaconda redis-py
 #conda install xxx模块权限不够时
 anaconda文件夹改变权限，并添加-R更改所有子文件夹限
 
-# anaconda 创建指定python3.5环境 并包含 anaconda包
-conda create -n chatbot python=3 anaconda
+# anaconda 创建指定python3.7环境 并包含 anaconda包
+conda create -n searchimage python=3.6 anaconda
 
 # 激活环境
 conda activate chatbot 或者 source activate chatbot
@@ -304,6 +327,9 @@ Web 安全（垃圾邮件等等）
 二进制数据存储
 适合保存在关系型数据的结构化数据
 
+# 大数据架构
+数据采集有Flume、Sqoop、Kettle等，数据存储有分布式文件系统HDFS、FastDFS，NoSQL数据库HBase、MongoDB等，数据分析有Spark技术栈、机器学习算法等
+
 
 # 商品推荐数据建模，简单示例
 customer只有customerid, name
@@ -387,6 +413,13 @@ ffmpeg -i input.mp4 -ss 00:00:2 -t 10 -r 1 -q:v 2 -f image2 pic-%03d.jpeg
 
 ffmpeg -y -i test.mp4 -ac "1" -ar "16000" -loglevel "error" test.wav
 
+# 截取视频
+. ffmpeg -i input.mp4 -ss 00:01:00 -to 00:02:00 -c copy output.mp4
+
+# 提取视频贞
+. ffmpeg -i input.mov -r 0.25 output_%04d.png
+. https://qastack.cn/superuser/135117/how-to-convert-video-to-images
+
 
 # 安装autosub
 . 从alpa分支安装如果出现 cannot import name 'enums' from 'google.cloud.speech_v1p1beta1' 错误
@@ -424,6 +457,9 @@ snap changes
 # 关于snap更多信息，查看man手册：
 man snap
 
+# 安装 redis桌面工具
+. sudo snap install redis-desktop-manager
+
 
 ***************************************Redis 相关***************************************
 
@@ -448,6 +484,9 @@ sudo redis-server /etc/redis/6380.conf
 
 #redis有两种持久化方式，Rdb 和 Aof
 
+
+# QT 问题时，运行后查看问题的细节
+export QT_DEBUG_PLUGINS=1
 
 
 
@@ -507,6 +546,45 @@ docker run -d \
     -p 3000:80 \
     training/webapp \
     python app.py
+   
+    
+docker build -t image/search:0.1 .
+    
+docker run -d --name zilliz_search_images_demo \
+-v IMAGE_PATH1:/tmp/pic1 \
+-v IMAGE_PATH2:/tmp/pic2 \
+-p 35000:5000 \
+-e "DATA_PATH=/tmp/images-data" \
+-e "MILVUS_HOST=192.168.1.123" \
+milvusbootcamp/pic-search-webserver:0.1.0
+
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+flush privileges;
+
+
+docker run -i -t --name image_search \
+-p 5000:5000 \
+-v /home/wallace/images:/images \
+-v /home/$USER/milvus/conf:/var/lib/milvus/conf \
+-e "DATA_PATH=/tmp/images-data" \
+-e "MILVUS_HOST=192.168.1.126" \
+image/search:0.1
+
+
+docker run -it --name image_search \
+-p 5000:5000 \
+-v /disk1/upload:/upload \
+-v /home/$USER/milvus/conf:/var/lib/milvus/conf \
+-e "DATA_PATH=/tmp/images-data" \
+-e "MILVUS_HOST=172.19.116.221" \
+image/search:0.2
+
+RUN mkdir -p /root/.keras/models && mv /app/data/models/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5 /root/.keras/models/
+
+https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5
+
+cat /dev/null > /var/lib/docker/containers/28a1ee5b28c9198708d7c42b28c4717453d50dbee068fbd8f37e71376a00e024/28a1ee5b28c9198708d7c42b28c4717453d50dbee068fbd8f37e71376a00e024-json.log
 
 
 #登录Docker Hub
@@ -527,6 +605,63 @@ docker pull ubuntu
 
 #列出部分镜像
 docker image ls ubuntu
+
+
+# docker镜像的迁移
+
+方法一:
+. docker save 镜像名称 > /tmp/export.tar    //docker镜像的保存和导出
+
+. docker load < /tmp/export.tar    //docker镜像的导入
+
+方法二:
+. docker ps -a  // 获取正在使用的容器的id
+. docker export 容器id  > /tmp/export.tar	//docker容器的保存和导出
+. cat /tmp/export.tar | docker import - 镜像名称:镜像标签	//docker容器的导入
+
+
+这两种方式的区别在于：导出后再导入(exported-imported)的镜像会丢失所有的历史，而保存后再加载（saveed-loaded）的镜像没有丢失历史和层(layer)。这意味着使用导出后再导入的方式，你将无法回滚到之前的层(layer)，同时，使用保存后再加载的方式持久化整个镜像，就可以做到层回滚（可以执行docker tag来回滚之前的层）。
+
+ sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+    
+sudo yum update
+
+sudo yum install docker-ce
+
+service docker start
+
+docker run -d --name milvus_cpu_0.10.0 \
+-p 19530:19530 \
+-p 19121:19121 \
+-v /home/$USER/milvus/db:/var/lib/milvus/db \
+-v /home/$USER/milvus/conf:/var/lib/milvus/conf \
+-v /home/$USER/milvus/logs:/var/lib/milvus/logs \
+-v /home/$USER/milvus/wal:/var/lib/milvus/wal \
+milvusdb/milvus:0.10.0-cpu-d061620-5f3c00
+
+
+
+
+QxHrz!)18
+
+
+101.132.131.16
+
+
+
+# docker容器日志清除
+. 容器日志一般存放在/var/lib/docker
+. ls -lh $(find /var/lib/docker/containers/ -name *-json.log)    //查看各个日志的文件大小
+. cat /dev/null > *-json.log    //清除日志
+
+
+# 
+. docker容器中使用路径是容器中的对应路径，不能直接写宿主机的路径
+. docker容器想要使用宿主机路径下的文件，可以在容器运行时使用 -v 挂在到容器中对应的路径下
+. docker 删除镜像时需要 删除使用镜像的容器、删除依赖的镜像后 才能删除
+
 ***************************************docker***************************************
 
 

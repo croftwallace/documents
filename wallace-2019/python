@@ -5,8 +5,10 @@ https://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p02_read-write_json_dat
 
 
 # 判断内容是什么类型
-type(content)
-
+. type(content)
+. isinstance(object,classinfo ) //classinfo 包含 int，float，bool，complex，str，list，dict，set，tuple
+- type() 不会认为子类是一种父类类型，不考虑继承关系
+- isinstance() 会认为子类是一种父类类型，考虑继承关系
 
 # 判断字符串是什么类型
 str为字符串
@@ -125,10 +127,49 @@ with open('data.json', 'r') as f:
 # Annoy距离的计算
 . a = AnnoyIndex(3, 'euclidean')   欧几里德距离
 . b = AnnoyIndex(3 ,'angular')	 角距离
+. 索引的创建与查找是分开的（特别是在创建树之后，您无法添加更多项目）
+
+# flask
+. http://docs.jinkan.org/docs/flask/quickstart.html#a-minimal-application
+
+# milvus手册，有一些参考手册
+. https://milvus.io/cn/docs/v0.10.1/vector_db.md
+
+# k-d tree算法
+. https://www.cnblogs.com/eyeszjwang/articles/2429382.html
 
 
+# ANNS的分类 (近似最近邻搜索)
+- 基于树的方法（如图a）
+. 随机KD树、R树
+
+- 基于散列的方法（如图b）
+. 局部敏感哈希（LSH）、光谱散列
+
+- 基于量化的方法
+. 产品量化、复合量化
+
+- 基于图的方法（如图c）
+. NSW、HNSW、FANNG、NSG
+
+# 查看已经安装的Python软件包及其版本
+pip freeze
 
 
+flask-cors
+pymysql~=0.10.1
+Keras==2.3.1
+numpy==1.16.5
+Pillow==7.1.0
+pymilvus==0.2.13
+diskcache~=5.1.0
+flask~=1.1.2
+flask_restful
+gunicorn==20.0.0
+tensorflow==1.15.2
+futures==3.1.1
+pymilvus==0.2.13
 
-
+werkzeug~=1.0.1
+tornado~=4.5.2
 
