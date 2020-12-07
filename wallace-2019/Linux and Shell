@@ -53,7 +53,7 @@ locate: 列出相关所有路径,不能模糊查找(名字带*),但是可以写�
 sudo updatedb: 更新locate数据库
 
 
-which: Find A Command (which)   which pip
+which: Find A Command (which)   //eg. which pip
 
 
 history: Show Command History (history)
