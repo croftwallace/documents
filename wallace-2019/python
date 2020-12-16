@@ -156,20 +156,3 @@ with open('data.json', 'r') as f:
 pip freeze
 
 
-flask-cors
-pymysql~=0.10.1
-Keras==2.3.1
-numpy==1.16.5
-Pillow==7.1.0
-pymilvus==0.2.13
-diskcache~=5.1.0
-flask~=1.1.2
-flask_restful
-gunicorn==20.0.0
-tensorflow==1.15.2
-futures==3.1.1
-pymilvus==0.2.13
-
-werkzeug~=1.0.1
-tornado~=4.5.2
-

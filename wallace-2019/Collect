@@ -337,6 +337,7 @@ order顶点只要orderid， ordertime
 product顶点只有productid， name。
 ordered/contains边暂时不需要额外属性字段，
 
+
 sudo dpkg-reconfigure wireshark-common
 
 sudo usermod -a -G wireshark $USER
@@ -420,6 +421,12 @@ ffmpeg -y -i test.mp4 -ac "1" -ar "16000" -loglevel "error" test.wav
 . ffmpeg -i input.mov -r 0.25 output_%04d.png
 . https://qastack.cn/superuser/135117/how-to-convert-video-to-images
 
+
+# 制作gif工具
+. ffmpeg -ss 25 -t 10 -i ~/test.mp4 -s 320x240 -f gif -r 1 ~/b.gif
+. -s参数来进行图像的缩放，
+. -r参数来限制目标文件的帧率
+. https://blog.csdn.net/happydeer/article/details/45727227
 
 # 安装autosub
 . 从alpa分支安装如果出现 cannot import name 'enums' from 'google.cloud.speech_v1p1beta1' 错误
@@ -547,18 +554,78 @@ docker run -d \
     training/webapp \
     python app.py
    
+
+#登录Docker Hub
+docker login
+
+#docker 搜索镜像
+docker search ubuntu
+
+#推送镜像到Docker Hub, username 请替换为你的 Docker 账号用户名
+docker tag ubuntu:18.04 username/ubuntu:18.04 //给镜像打标签
+
+docker push username/ubuntu:18.04 //推送镜像到Docker Hub仓库
+
+docker search username //查看自己仓库的镜像
+
+#拉取镜像
+docker pull ubuntu
+
+#列出部分镜像
+docker image ls ubuntu
+
+
+# docker 提交镜像
+. docker commit -a "runoob.com" -m "my apache" 0bd244689ed2 mymysql:v1
+-a :提交的镜像作者
+-c :使用Dockerfile指令来创建镜像
+-m :提交时的说明文字
+-p :在commit时，将容器暂停
+
+将容器0bd244689ed2保存为新的镜像,并添加提交人信息和说明信息
+
+
+# docker镜像的迁移
+方法一:
+. docker save 镜像名称 > /tmp/export.tar    //docker镜像的保存和导出
+
+. docker load < /tmp/export.tar    //docker镜像的导入
+
+方法二:
+. docker ps -a  // 获取正在使用的容器的id
+. docker export 容器id  > /tmp/export.tar	//docker容器的保存和导出
+. cat /tmp/export.tar | docker import - 镜像名称:镜像标签	//docker容器的导入
+
+
+这两种方式的区别在于：导出后再导入(exported-imported)的镜像会丢失所有的历史，而保存后再加载（saveed-loaded）的镜像没有丢失历史和层(layer)。这意味着使用导出后再导入的方式，你将无法回滚到之前的层(layer)，同时，使用保存后再加载的方式持久化整个镜像，就可以做到层回滚（可以执行docker tag来回滚之前的层）。
+
+
+
+ sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+    
+
+sudo yum update
+
+sudo yum install docker-ce
+
+service docker start
+
+docker run -d --name milvus_cpu_0.10.0 \
+-p 19530:19530 \
+-p 19121:19121 \
+-v /home/$USER/milvus/db:/var/lib/milvus/db \
+-v /home/$USER/milvus/conf:/var/lib/milvus/conf \
+-v /home/$USER/milvus/logs:/var/lib/milvus/logs \
+-v /home/$USER/milvus/wal:/var/lib/milvus/wal \
+milvusdb/milvus:0.10.0-cpu-d061620-5f3c00
+
+
     
 docker build -t image/search:0.1 .
     
-docker run -d --name zilliz_search_images_demo \
--v IMAGE_PATH1:/tmp/pic1 \
--v IMAGE_PATH2:/tmp/pic2 \
--p 35000:5000 \
--e "DATA_PATH=/tmp/images-data" \
--e "MILVUS_HOST=192.168.1.123" \
-milvusbootcamp/pic-search-webserver:0.1.0
-
-
+# mysql数据库授权其他方式访问
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
 flush privileges;
 
@@ -583,63 +650,6 @@ image/search:0.2
 RUN mkdir -p /root/.keras/models && mv /app/data/models/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5 /root/.keras/models/
 
 https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5
-
-cat /dev/null > /var/lib/docker/containers/28a1ee5b28c9198708d7c42b28c4717453d50dbee068fbd8f37e71376a00e024/28a1ee5b28c9198708d7c42b28c4717453d50dbee068fbd8f37e71376a00e024-json.log
-
-
-#登录Docker Hub
-docker login
-
-#docker 搜索镜像
-docker search ubuntu
-
-#推送镜像到Docker Hub, username 请替换为你的 Docker 账号用户名
-docker tag ubuntu:18.04 username/ubuntu:18.04 //给镜像打标签
-
-docker push username/ubuntu:18.04 //推送镜像到Docker Hub仓库
-
-docker search username //查看自己仓库的镜像
-
-#拉取镜像
-docker pull ubuntu
-
-#列出部分镜像
-docker image ls ubuntu
-
-
-# docker镜像的迁移
-
-方法一:
-. docker save 镜像名称 > /tmp/export.tar    //docker镜像的保存和导出
-
-. docker load < /tmp/export.tar    //docker镜像的导入
-
-方法二:
-. docker ps -a  // 获取正在使用的容器的id
-. docker export 容器id  > /tmp/export.tar	//docker容器的保存和导出
-. cat /tmp/export.tar | docker import - 镜像名称:镜像标签	//docker容器的导入
-
-
-这两种方式的区别在于：导出后再导入(exported-imported)的镜像会丢失所有的历史，而保存后再加载（saveed-loaded）的镜像没有丢失历史和层(layer)。这意味着使用导出后再导入的方式，你将无法回滚到之前的层(layer)，同时，使用保存后再加载的方式持久化整个镜像，就可以做到层回滚（可以执行docker tag来回滚之前的层）。
-
- sudo yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
-    
-sudo yum update
-
-sudo yum install docker-ce
-
-service docker start
-
-docker run -d --name milvus_cpu_0.10.0 \
--p 19530:19530 \
--p 19121:19121 \
--v /home/$USER/milvus/db:/var/lib/milvus/db \
--v /home/$USER/milvus/conf:/var/lib/milvus/conf \
--v /home/$USER/milvus/logs:/var/lib/milvus/logs \
--v /home/$USER/milvus/wal:/var/lib/milvus/wal \
-milvusdb/milvus:0.10.0-cpu-d061620-5f3c00
 
 
 
