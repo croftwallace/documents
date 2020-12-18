@@ -57,6 +57,10 @@
 . 通过 Callable 和 Future 创建线程
 . 通过线程池创建
 
+# ThreadLocal
+. ThreadLocal 为每一个线程提供一个独立的副本，比如 static变量没有用 ThreadLocal修饰，多个线程访问是同一份资源，
+  加上ThreadLocal修饰，不会被共享，而是每一个线程提供一个独立副本，每个线程号作为key，取自己对应value
+
 
 # JVM 对 Java 的 原 生 锁 做 了 哪 些 优 化
 . 一种优化是使用自旋锁，即在把线程进行阻塞操作之前先让线程自旋等
@@ -93,7 +97,8 @@
 
 
 # AOP简介与作用
-- AOP简
+- AOP简介
+  . AOP 只是模式而已，实现方案大概就是运行时和编译时，具体方案那就更多
   . AOP技术是建立在JAVA语言的反射机制与动态代理机制之上的
   . AOP实际是GoF设计模式的延续，设计模式孜孜不倦追求的是调用者和被调用者之间的解耦,提高代码的灵活性和可扩展性，AOP可以说也是这种目标的一种实现
   . 应用对象只实现它们应该做的——完成业务逻辑——仅此而已。它们并不负责（甚至是意识）其它的系统级关注点，例如日志或事务支持
@@ -103,8 +108,50 @@
   . 将日志记录，性能统计，安全控制，事务处理，异常处理等代码从业务逻辑代码中划分出来，通过对这些行为的分离，我们希望可以将它们独立到非指导业务逻辑的方法中，进而改变这些行为的时候不影响业务逻辑的代码
 
 
+# String类
+. String类创建了不可变的字符序列, 如果需要对字符串做很多修改，那么应该选择使用StringBuffer和StringBuilder类
+. String s=new String("ABC") 将创建一个内容为"abc"的String对象，并且s指向这个对象
+. 一旦s=s+"abc";这样的操作，那么将创建一个新的String对象来存放新的内容，原先的对象依旧在内存中，但是s不在指向它，那么这个对象就会成为垃圾内存，在某一个特定的时刻有Java虚拟机回收
+
+# StringBuilder类和StringBuffer类
+. StringBuilder的功能与StringBuffer类非常相似，因为它们都通过创建可变的字符序列来提供String类的替代方法
+. StringBuilder实例不能安全地用于多个线程, StringBuffer则可以
+. 单个线程中使用StringBuilder大多数实现中它会更快
+
+# HashMap和Hashtable
+. Hashtable同步，线程安全，HashMap则不是
+. Hashtable类的初始默认容量为11，而loadFactor为0.75
+. HashMap建初始容量为16且负载因子为0.75
+. HashMap都允许存储null键，但是应该只有一个null键, Hashtable则不允许
+. 基于哈希表的Map接口的实现
 
 
+# SpringBoot项目
+. Spring Boot父级依赖的概念, 用来提供相关的Maven默认依赖，使用它之后，常用的包依赖可以省去version标签
+. Spring Boot提供了很多”开箱即用“的依赖模块,起步依赖 spring-boot-starter-xx的概念,封装好了你想要实现的功能的依赖
+. 应用入口类的作用
+
+
+
+# SpringBoot启动类
+. http://tengj.top/2017/02/26/springboot1/
+. 为了演示简单，我们不再新建控制类，而是直接在这个入口类中编写，添加@RestController以及index方法
+
+@RestController
+@SpringBootApplication
+public class Chapter1Application {
+
+	@RequestMapping("/")
+	public String index(){
+		return "Hello Spring Boot";
+	}
+	public static void main(String[] args) {
+		SpringApplication.run(Chapter1Application.class, args);
+	}
+}
+. @SpringBootApplication是Sprnig Boot项目的核心注解，主要目的是开启自动配置
+. main方法这是一个标准的Java应用的main的方法，主要作用是作为项目启动的入口
+. @RestController注解等价于@Controller+@ResponseBody的结合，使用这个注解的类里面的方法都以json格式输出
 
 
 

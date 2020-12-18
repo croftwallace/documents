@@ -467,6 +467,8 @@ man snap
 # 安装 redis桌面工具
 . sudo snap install redis-desktop-manager
 
+# Spring Tool Suite (STS) for Eclipse
+
 
 ***************************************Redis 相关***************************************
 
