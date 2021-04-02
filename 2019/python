@@ -1,0 +1,163 @@
+
+### python中文手册地址： 
+https://docs.python.org/zh-cn/3/library
+https://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p02_read-write_json_data.html
+
+#python 中索引从 0开始
+
+# 判断内容是什么类型
+. type(content)
+. isinstance(object,classinfo ) //classinfo 包含 int，float，bool，complex，str，list，dict，set，tuple
+- type() 不会认为子类是一种父类类型，不考虑继承关系
+- isinstance() 会认为子类是一种父类类型，考虑继承关系
+
+# ndarray
+  https://www.jianshu.com/p/5cc8738aa3da
+  ndarray对象是用于存放同类型元素的多维数组，是numpy中的基本对象之一
+
+# 判断字符串是什么类型
+str为字符串
+1、str.isalnum() 所有字符都是数字或者字母
+2、str.isalpha() 所有字符都是字母
+3、str.isdigit() 所有字符都是数字
+4、str.islower() 所有字符都是小写
+5、str.isupper() 所有字符都是大写
+6、str.istitle() 所有单词都是首字母大写
+7、str.isspace() 所有字符都是空白字符、\t、\n、\r
+
+# Python中如何将文件保存为utf-8无BOM
+f = codecs.open('ufile.log', 'w', "UTF-8")
+
+# Python中如何将文件保存为utf-8（带BOM）的格式
+f = codecs.open('ufile.log', 'w', 'utf_8_sig')
+
+# python '''  三引号
+python三引号允许一个字符串跨多行，字符串中可以包含换行符、制表符以及其他特殊字符
+三引号让程序员从引号和特殊字符串的泥潭里面解脱出来，自始至终保持一小块字符串的格式是所谓的WYSIWYG（所见即所得）格式的
+
+
+# python 判断参数为Nonetype类型或空
+if oneString == "":
+	print "empty"
+
+if hostip is None:
+       print "no hostip,is nonetype"
+elif hostip:
+       print "hostip is not null"  
+else:
+       print " hostip is null"
+
+
+
+# argparse
+. https://docs.python.org/zh-cn/3/library/argparse.html?highlight=argparse#module-argparse
+. 创建解析器: parser = argparse.ArgumentParser(description='Process some integers.')
+. 添加参数: parser.add_argument('--path', type=str, dest='path', help='file path', required=True)
+. 解析参数: parser.parse_args()
+
+# 安装python3后使用pip和pip3的区别
+. 其实这两个命令效果是一样的，没有区别
+. 是当一台电脑同时有多个版本的Python的时候，用pip3就可以自动区分用Python3来安装库。是为了避免和Python2发生冲突
+. 电脑只安装了Python3，那么不管用pip还是pip3都一样的
+
+
+# np.load(), np.save()
+. np.save() 保存一个数组到一个二进制的文件中,保存格式是.npy
+. np.savez() 可以保存多个数组到同一个文件中,保存格式是.npz,它其实就是多个前面np.save的保存的npy,再通过打包(未压缩)的方式把这些文件归到一个文件上
+. np.load() 读取保存的数据
+
+
+# 编码和解码JSON数据 
+json.dumps(data)   将python数据结构转换为json 字符串
+json.loads(json_str)  将json字符串转换回一个Python 字典数据结构
+
+
+
+# 与文件结合，写入json数据
+with open('data.json', 'w') as f:
+    json.dump(data, f)
+
+# 与文件结合，读取数据
+with open('data.json', 'r') as f:
+    data = json.load(f)
+
+
+# python 文件读写
+. read 打开&读取
+  –r：打开指定文件，只用于reading。文件的指针在开头。python的默认模式。若无指定文件则报错
+  –·rb：以二进制执行的r；
+
+. write 打开&覆盖
+  – w：打开指定文件，只用于writing。如果文件存在，则先删除（表里所有的）已有数据，如果不存在，则创建；
+  – wb：以二进制执行的w；
+
+. append 打开&添加
+  – a：打开指定文件，用于appending。如果文件存在，指针放在结尾，如果文件不存在，则创建；
+  –ab：以二进制执行的a；
+
+. +
+  – r+ / rb+：reading & writing。在r / rb+的基础上多了writing。
+  – w+ / wb+：writing & reading。在w+ / wb+的基础上多了reading。
+  – a+ / ab+：appending & reading。在a+ / ab+的基础上多了reading。
+
+
+# python之numpy数组拼接，组合, 分割
+. https://www.cnblogs.com/huangshiyu13/p/6672828.html
+. 水平组合  np.concatenate((a,b),axis=1)
+. 垂直组合  np.concatenate((a,b),axis=0)
+
+
+# Annoy
+. https://www.cnblogs.com/futurehau/p/6524396.html
+. Annoy是高维空间求近似最近邻的一个开源库
+. Annoy利用随机投影构建一颗树，查询时间为O(logn)
+. Annoy通过随机挑选两个点，并使用垂直于这个点的等距离超平面将集合划分为两部分
+
+
+
+# 超平面
+. https://zhuanlan.zhihu.com/p/74033232
+. 超平面指的是比所处空间少一个维度的子空间
+
+
+#  locality-sensitive hashing (LSH) 位置敏感哈希
+. https://en.wikipedia.org/wiki/Locality-sensitive_hashing#Random_projection
+. 一种算法技术，可以将相似的输入项以很高的概率散列到相同的“存储桶”中
+. 可用于数据聚类和最近邻居搜索
+. 它与常规哈希技术的不同之处在于，哈希冲突最大化，而不是最小化。可替代地，该技术可以被视为减小尺寸的一种方式
+. 高维数据；高维输入项目可以简化为低维版本，同时保留项目之间的相对距离
+
+
+
+# Annoy距离的计算
+. a = AnnoyIndex(3, 'euclidean')   欧几里德距离
+. b = AnnoyIndex(3 ,'angular')	 角距离
+. 索引的创建与查找是分开的（特别是在创建树之后，您无法添加更多项目）
+
+# flask
+. http://docs.jinkan.org/docs/flask/quickstart.html#a-minimal-application
+
+# milvus手册，有一些参考手册
+. https://milvus.io/cn/docs/v0.10.1/vector_db.md
+
+# k-d tree算法
+. https://www.cnblogs.com/eyeszjwang/articles/2429382.html
+
+
+# ANNS的分类 (近似最近邻搜索)
+- 基于树的方法（如图a）
+. 随机KD树、R树
+
+- 基于散列的方法（如图b）
+. 局部敏感哈希（LSH）、光谱散列
+
+- 基于量化的方法
+. 产品量化、复合量化
+
+- 基于图的方法（如图c）
+. NSW、HNSW、FANNG、NSG
+
+# 查看已经安装的Python软件包及其版本
+pip freeze
+
+

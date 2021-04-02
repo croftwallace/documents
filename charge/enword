@@ -1,0 +1,24 @@
+
+. qualifiers: 限定词
+. narrow: 狭窄
+. candidates: 候选人
+. determine: 确定
+. lite: 精简版 
+. properly: 适当地
+. intercept: 拦截
+
+. optimal: 最佳
+. using the elbow method to find the optimal number of clusters
+  使用弯头法找到最佳的簇数
+  
+. incompatible: 不相容
+. incompatible shape for a non-contiguous array
+  非连续数组的形状不兼容
+  
+. minima: 极小值
+. it falls in local minima. That's why it can be useful to restart it several times  
+  它收敛于局部最小值。 这就是为什么多次重新启动会很有用的原因
+ 
+. Expectation Maximization: 期望最大化 // kmeans 的EM算法
+
+. cluster assignment step: 簇分配步骤

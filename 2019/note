@@ -1,0 +1,60 @@
+
+# PyTorch，TensorFlow 的 softmax函数
+. softmax 的作用是把 一个序列，变成概率
+. 所有的值都是 [0, 1] 之间的（因为概率必须是 [0, 1]）
+. 所有的值加起来等于 1
+
+
+
+import torch
+import torch.nn as nn
+import numpy as np
+
+
+def softmax(x):
+return np.exp(x) / np.sum(np.exp(x), axis=0)
+x = np.array( [2.0, 1.0, 0.1])
+outputs softmax(x)
+print('softmax numpy:1, outputs)
+
+
+# torch.cat()
+https://blog.csdn.net/u011415481/article/details/84709487
+https://blog.csdn.net/qq_39709535/article/details/80803003
+
+
+# map()函数和lambda表达式
+https://blog.csdn.net/u013944212/article/details/55095687
+https://www.runoob.com/python/python-func-map.html
+map  Python 2.x 返回列表  Python 3.x 返回迭代器
+
+# python 列表与迭代器的区别
+https://www.jianshu.com/p/1319018dde31
+
+# torch.nn.functional中softmax的作用及其参数说明
+https://www.cnblogs.com/wanghui-garcia/p/10675588.html
+
+
+# dim
+dim:指明维度，dim=0表示按列计算；dim=1表示按行计算。默认dim的方法已经弃用了，最好声明dim，否则会警告
+cat、softmax 等涉及到计算时，一维时使用dim=0，使用dim=1报错
+一维使用dim=1报错： RuntimeError: Dimension out of range (expected to be in range of [-1, 0], but got 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

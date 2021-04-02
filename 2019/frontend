@@ -1,0 +1,126 @@
+
+
+*******************************前端项目启动及 学习记录 *******************************
+
+### 原始项目地址
+
+https://github.com/bailichen/vue-weixin.git
+
+### 技术栈
+
+vue2+vue-router+webpack+vuex+scss+svg构图+es6/7
+
+
+### SVG
+
+可缩放矢量图形，处理图像相关技术
+
+
+### SCSS
+
+Scss 是 CSS 的扩展， 在保证兼容性的基础上， 允许使用变量、 嵌套、 混合、 导入等特性， 
+在编写大量的 CSS 文件时很有帮助
+
+https://beginor.github.io/2014/07/11/introduction-to-scss.html
+
+
+### vue2 API手册
+
+https://cn.vuejs.org/v2/guide/
+
+
+### <router-view>
+
+<router-view> 是一个顶级的外链。它会渲染一个和顶级路由匹配的组件  --此项目中路由统一管理 router.js
+可以这样理解，正常写法中，一层路径(/xxx)对应一个router-view
+
+比如url: /a/b/c (假设a、b、c都为正常路径，不会作为参数)
+
+那/a对应的就是App.vue中的router-view，/a进入a.vue中
+那/a/b对应的就是a.vue中的router-view， /a/b进入b.vue中
+
+主要是构建 SPA (单页应用) 时，方便渲染你指定路由对应的组件。
+你可以 router-view 当做是一个容器，它渲染的组件是你使用 vue-router 指定的。比如：
+
+视图层：
+
+<div id="app">
+  <router-view></router-view>
+</div>
+路由定义：
+
+router.map({
+  '/foo': {
+    // 路由匹配到/foo时，会渲染一个Foo组件
+    component: Foo
+  }
+})
+初始化实例:
+
+// start app
+var App = Vue.extend({})
+router.start(App, '#app')
+当你访问 /foo 时，router-view 就被 Foo 组件替换了。
+
+
+### vue2 <transition>
+
+<transition> 元素作为单个元素/组件的过渡效果。<transition> 只会把过渡效果应用到其包裹的内容上，
+而不会额外渲染 DOM 元素，也不会出现在检测过的组件层级中
+
+
+### vue2 <transition>
+
+<keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们， --主要用于保留组件状态或避免重新渲染
+
+<!-- 和 `<transition>` 一起使用 -->
+<transition>
+  <keep-alive>
+    <component :is="view"></component>
+  </keep-alive>
+</transition>
+
+
+### Promise
+
+Promise.resolve(value)方法返回一个以给定值解析后的Promise 对象。
+但如果这个值是个thenable（即带有then方法），返回的promise会“跟随”这个thenable的对象，
+采用它的最终状态（指resolved/rejected/pending/settled）；如果传入的value本身就是promise对象，
+则该对象作为Promise.resolve方法的返回值返回；否则以该值为成功状态返回promise对象。
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
+
+
+### => 箭头函数
+
+箭头函数表达式的语法比函数表达式更简洁，并且没有自己的this，arguments，super或 new.target
+这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数
+
+
+基础语法：
+(参数1, 参数2, …, 参数N) => { 函数声明 }
+
+//相当于：(参数1, 参数2, …, 参数N) =>{ return 表达式; }
+(参数1, 参数2, …, 参数N) => 表达式（单一）
+
+// 当只有一个参数时，圆括号是可选的：
+(单一参数) => {函数声明}
+单一参数 => {函数声明}
+
+// 没有参数的函数应该写成一对圆括号。
+() => {函数声明}
+
+高级语法：
+//加括号的函数体返回对象字面表达式：
+参数=> ({foo: bar})
+
+//支持剩余参数和默认参数
+(参数1, 参数2, ...rest) => {函数声明}
+(参数1 = 默认值1,参数2, …, 参数N = 默认值N) => {函数声明}
+
+//同样支持参数列表解构
+let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
+f();  // 6
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+

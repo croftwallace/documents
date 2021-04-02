@@ -1,0 +1,217 @@
+职位描述
+1、负责基于Hadoop生态的海量数据平台建设；
+2、参与大数据平台的数据构架设计、完成从业务模型到数据模型的设计和开发；
+3、基于海量数据的数据仓库，为业务搭建通用的查询和分析解决方案；
+4、管理并优化存储&计算资源利用效率、监控并维护例行ETL任务；
+5、梳理整体业务指标，可视化报表开发；
+6、将数据维度的方法和经验进行抽象和沉淀，建设数据应用产品，实现业务支持的规模化和快速横向扩展；
+ 
+任职要求:
+1、熟练Java语言，熟悉JVM虚拟机原理，数据结构和算法等基础扎实，熟练掌握并应用面向对象的编程思想；熟悉Python/Shell等脚本语言；Linux操作系统；
+2、熟练Spring、SpringMVC、SpringBoot、SpringCloud、MyBatis框架；
+3、熟悉大数据生态圈相关技术的开发及使用，如：Flume、Kafka、Zookeeper、Hadoop、Spark、Storm、Flink、Yarn、HBase、HDFS、Hive、Impala/Presto、Azkaban/Oozie、ElasticSearch等，熟悉上述三种或以上，能用Java进行大数据应用开发；
+4、熟悉数据仓库领域知识、管理技能和数据仓库模型设计方法论，包括但不局限于：元数据管理、数据质量、性能调优等，有从事分布式数据存储、计算平台应用开发经验；
+5、熟悉基于机器学习的数据分析、挖掘技术；
+6、业务理解能力强，对数据敏感，有智慧校园、智慧应急行业数据分析经验者优先；
+7、熟练使用Ambari、CDH等大数据开源工具，具有Ambari二次开发者优先；
+8、熟悉容器平台开发优先考虑，有Docker、Kubernetes相关开发经验更佳；
+9、有CI/CD经验者优先。
+
+
+
+# 元数据
+. 描述事物本身的数据，例如描述一个人 有 年龄、姓名、身高、体重、性别、兴趣爱好、教育程度
+
+# ETL
+  https://zhuanlan.zhihu.com/p/137393710
+ETL，Extract-Transform-Load的缩写，是将业务系统的数据经过抽取、清洗转换之后加载到数据仓库的过程。ETL是数据集成的第一步，也是构建数据仓库最重要的步骤，目的是将企业中的分散、零乱、标准不统一的数据整合到一起，为企业的决策提供分析依据。ETL一词较常用在数据仓库，但其对象并不限于数据仓库
+
+
+
+## 如何创建一个大数据平台
+   https://www.zhihu.com/question/37627092
+
+# hadoop 分布式计算平台/组件安装
+. Hadoop的核心是HDFS，一个分布式的文件系统
+. 在其基础上常用的组件有Yarn、Zookeeper、Hive、Hbase、Sqoop、Impala、ElasticSearch、Spark等
+. 分布式集群的资源管理器一般用Yarn, 全名是Yet Another Resource Negotiator
+. 常用的分布式数据数据『仓』库有Hive、Hbase.  Hive可以用SQL查询『但效率略低』，Hbase可以快速『近实时』读取行
+. 外部数据库导入导出需要用到Sqoop。Sqoop将数据从Oracle、MySQL等传统数据库导入Hive或Hbase
+. Zookeeper是提供数据同步服务，Yarn和Hbase需要它的支持
+. Impala是对hive的一个补充，可以实现高效的SQL查询
+. ElasticSearch是一个分布式的搜索引擎
+. Spark在core上面有ML lib，Spark Streaming、Spark QL和GraphX等库，可以满足几乎所有常见数据分析需求
+
+. 做etl的kettle，比较方便
+. 实时数据采集的 flume fluentd logstash
+. 流计算的storm +kafka
+. 管理作业可以用azkaban
+
+# 数据分析
+. 数据分析一般包括两个阶段：数据预处理和数据建模分析
+. 数据预处理是为后面的建模分析做准备，主要工作时从海量数据中提取可用特征，建立大宽表。这个过程可能会用到Hive SQL，Spark QL和Impala
+. 数据建模分析是针对预处理提取的特征/数据建模，得到想要的结果。如前面所提到的，这一块最好用的是Spark。常用的机器学习算法，如朴素贝叶斯、逻辑回归、决策树、神经网络、TFIDF、协同过滤等，都已经在ML lib里面，调用比较方便
+
+
+# 结果可视化及输出API
+. 可视化一般式对结果或部分原始数据做展示。一般有两种情况，行数据展示，和列查找展示。在这里，要基于大数据平台做展示，会需要用到ElasticSearch和Hbase。Hbase提供快速『ms级别』的行查找。 ElasticSearch可以实现列索引，提供快速列查找
+
+
+
+
+
+# mybatis常用对象SqlSessionFactory和SqlSession介绍和运用
+  https://blog.csdn.net/u013412772/article/details/73648537
+  -- mybatis框架主要是围绕着SqlSessionFactory进行的，创建过程大概如下
+    . 定义一个Configuration对象，其中包含数据源、事务、mapper文件资源以及影响数据库行为属性设置settings
+    . 通过配置对象，则可以创建一个SqlSessionFactoryBuilder对象
+    . 通过 SqlSessionFactoryBuilder 获得SqlSessionFactory 的实例。
+    . SqlSessionFactory 的实例可以获得操作数据的SqlSession实例，通过这个实例对数据库进行操作
+    
+. SqlSession对象完全包含以数据库为背景的所有执行SQL操作的方法,它的底层封装了JDBC连接,可以用SqlSession实例来直接执行被映射的SQL语句.每个线程都应该有它自己的SqlSession实例.SqlSession的实例不能被共享,同时SqlSession也是线程不安全的,绝对不能讲SqlSeesion实例的引用放在一个类的静态字段甚至是实例字段中.也绝不能将SqlSession实例的引用放在任何类型的管理范围中,比如Servlet当中的HttpSession对象中.使用完SqlSeesion之后关闭Session很重要,应该确保使用finally块来关闭它.
+
+
+# MyBatis一级缓存详解
+  https://mp.weixin.qq.com/s/4Puee_pPCNArkgnFaYlIjg
+. 在应用运行过程中，我们有可能在一次数据库会话中，执行多次查询条件完全相同的SQL，MyBatis 提供了一级缓存的方案优化这部分场景，如果是相同的SQL语句，会优先命中一级缓存，避免直接对数据库进行查询，提高性能
+. 在两次相同查询语句中使用插入，会对一级缓存进行刷新，会导致一级缓存失效
+. MyBatis 一级缓存其实就是 SqlSession 级别的缓存
+. MyBatis 一级缓存最大的共享范围就是一个SqlSession内部，那么如果多个 SqlSession 需要共享缓存，则需要开启二级缓存
+
+
+# MyBatis 一、二级缓存全详解
+. 二级缓存默认是不开启的，需要手动开启二级缓存，实现二级缓存的时候，MyBatis要求返回的POJO必须是可序列化的
+. 开启二级缓存的条件也是比较简单，通过直接在 MyBatis 配置文件中通过
+  <settings>
+	<setting name = "cacheEnabled" value = "true" />
+  </settings>
+. SqlSession 在未提交的时候，SQL 语句产生的查询结果还没有放入二级缓存中，这个时候 SqlSession2 在查询的时候是感受不到二级缓存的存在的
+. insert,update,delete操作会清空所在namespace下的全部缓存
+. 最后还是建议，放弃二级缓存，在业务层使用可控制的缓存代替更好
+
+# mybatis 分页
+. mybatis自带分页RowBounds:   //逻辑分页， 查询所有数据在内存中进行分页
+.  mybatis自写sql或者通过分页插件PageHelper:   //物理分页, sql分页都属于物理分页
+. 分页插件的原理：实现 Mybatis 提供的接口，实现自定义插件，在插件的拦截方法内拦截待执行的 sql，然后重写 sql
+. 逻辑分页 内存开销比较大,在数据量比较小效率比物理分页高;在数据量很大的情况下,内存开销过大,容易内存溢出,不建议使用
+. 物理分页 内存开销比较小,在数据量比较小的情况下效率比逻辑分页还是低,在数据量很大的情况下,建议使用物理分页
+
+# sql事物
+. 原子性：保证任务中的所有操作都执行完毕；否则，事务会在出现错误时终止，并回滚之前所有操作到原始状态。
+. 一致性：如果事务成功执行，则数据库的状态得到了进行了正确的转变。
+. 隔离性：保证不同的事务相互独立、透明地执行。
+. 持久性：即使出现系统故障，之前成功执行的事务的结果也会持久存在。
+
+. COMMIT：提交更改, 将自上次 COMMIT 命令或者 ROLLBACK 命令执行以来所有的事务都保存到数据库中
+. ROLLBACK：回滚更改, 只能撤销自上次 COMMIT 命令或者 ROLLBACK 命令执行以来的事务
+. SAVEPOINT：在事务内部创建一系列可以 ROLLBACK 的还原点, ROLLBACK TO SAVEPOINT_NAME;
+. SET TRANSACTION：命名事务；
+
+. @Transactional可以作用于接口、接口方法、类以及类方法上
+
+
+# 常见的数据库优化方法
+. 选取最适用的字段属性,数据库中的表越小，在它上面执行的查询也就会越快; 在可能的情况下，应该尽量把字段设置为NOTNULL
+. 索引一般建在where 后跟的条件查询字段上
+. 使用连接（JOIN）来代替子查询(Sub-Queries)
+. 事务, 用到一系列的语句来完成某种工作，当这个语句块中的某一条语句运行出错的时候，整个语句块的操作就会变得不确定起来,
+  事物以BEGIN关键字开始，COMMIT关键字结束; 在事务执行的过程中，数据库将会被锁定，因此其它的用户请求只能暂时等待直到
+  该事务结束
+. 锁定表, 通过锁定表的方法来获得更好的性能,避免事物独占数据库
+. 优化的查询语句 
+  SELECT * FROM books WHERE name like "MySQL%"
+  换用下面的查询，返回的结果一样，但速度就要快上很多
+  SELECT * FROM books WHERE name >= "MySQL" and name < "MySQM"
+
+
+# 消息队列（mq）是什么
+  https://www.zhihu.com/question/54152397
+. 比较主流的消息队列中间件主要有，Kafka、ActiveMQ、RabbitMQ、RocketMQ 等这几种
+. 可以简单理解为 把要传输的数据放在队列中；把数据放到消息队列叫做生产者，从消息队列里边取数据叫做消费者
+  - 为什么要用消息队列，也就是在问：用了消息队列有什么好处,
+    . 解耦
+    . 异步
+    . 削峰/限流
+. 高可用: 我们使用消息队列来做解耦、异步还是削峰，消息队列肯定不能是单机的,我们项目中使用消息队列，都是得集群/分布式 的。要做集群/分布式就必然希望该消息队列能够提供现成的支持，而不是自己写代码手动去实现
+. 数据丢失问题: Redis可以将数据持久化磁盘上，万一Redis挂了，还能从磁盘从将数据恢复过来。同样地，消息队列中的数据也需要存在别的地方，这样才尽可能减少数据的丢失; RabbitMQ 会把信息保存在磁盘上
+. 分布式事务：把下单，优惠券，积分。。。都放在一个事务里面一样，要成功一起成功，要失败一起失败
+
+
+# RabbitMQ
+. RabbitMQ 作用：异步，解耦，缓冲，消息分发。
+. RabbitMQ 主要分为3个部分，生产者，交换机和队列，消费者。
+. 需要注意消息持久化，目的为了防止 RabbitMQ 宕机；考虑 ACK 机制，目的为了如果消费者对消息的处理失败了，那么后续要如何处理。
+
+
+# SpringBoot底层实现原理
+. SpringBoot是一个快速开发框架，快速的将一些常用的第三方依赖整合（原理：通过Maven子父工程的方式），简化XML配置，全部采用注解形式，内置Http服务器（Jetty和Tomcat），最终以java应用程序进行执行
+- SpringBoot核心原理: 
+  . 基于SpringMVC无配置文件（纯Java）完全注解化+内置tomcat-embed-core实现SpringBoot框架，Main函数启动  
+  . SpringBoot核心快速整合第三方框架原理:Maven继承依赖关系
+- SpringBoot重点:
+  . 快速整合第三方依赖：maven子父依赖关系
+  . springboot 通过引用spring-boot-starter-web依赖，整合SpingMVC框架。只需要引用一个jar包，就可以通过Maven继承的方式引用到Spring-aop,Spring-beans,Spring-core,Spring-web等相关依赖
+  
+- springboot没有配置文件，如何进行初始化
+  . 在没有web.xml配置文件的情况，通过java代码操作整个SpringMVC的初始化过程，java代码最终会生成class文件,内置Tomcat就会加载这些class文件，当所有程序加载完成后，项目就可以访问了
+  
+. springBoot框架流程：先创建Tomcat容器，然后加载class文件，加载过程中如果发现有java代码编写的SpringMVC初始化，就会创建SpringMVC容器。所有程序执行完毕后，项目就可以访问了
+
+
+# springmvc执行流程及工作原理
+. 用户发送请求至前端控制器DispatcherServlet
+. DispatcherServlet收到请求调用处理器映射器HandlerMapping。
+. 处理器映射器根据请求url找到具体的处理器，生成处理器执行链HandlerExecutionChain(包括处理器对象和处理器拦截器)一并返回给DispatcherServlet。
+. DispatcherServlet根据处理器Handler获取处理器适配器HandlerAdapter执行HandlerAdapter处理一系列的操作，如：参数封装，数据格式转换，数据验证等操作
+. 执行处理器Handler(Controller，也叫页面控制器)。
+. Handler执行完成返回ModelAndView
+. HandlerAdapter将Handler执行结果ModelAndView返回到DispatcherServlet
+. DispatcherServlet将ModelAndView传给ViewReslover视图解析器
+. ViewReslover解析后返回具体View
+. DispatcherServlet对View进行渲染视图（即将模型数据model填充至视图中）。
+. DispatcherServlet响应用户
+
+
+
+# redis缓存穿透、缓存击穿、缓存雪崩解决方案
+. 缓存穿透: 指查询一个一定不存在的数据，从存储层查不到数据则不写入缓存，这将导致这个不存在的数据每次请求都要到 
+            DB去查询，可能导致 DB 挂掉。 1.把这个空结果进行缓存； 2.可能存在的数据哈希到一个足够大的 bitmap 中，
+            一个一定不存在的数据会被这个 bitmap 拦截掉
+. 缓存击穿: 单个key过期时，出现大量请求，由于过期而查询数据库导致崩溃。1.设置永不过期，逻辑处理过期；2.使用互斥锁，
+            先加载db中数据，写回缓存 
+. 缓存雪崩: 雪崩是很多 key，击穿是某一个key 缓存。 1.将缓存失效时间分散开
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

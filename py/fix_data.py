@@ -35,8 +35,8 @@ rows = cursor.fetchall()
 #print('records:\n'+str(rows))
 
 
-sids = []
-ids = []
+sids = []  #存redis中所有客服id号
+ids = []   #存mysql数据库中user表中的所有客服id号
 
 tmp_keys = rds.keys('qxy:servicer*')
 
@@ -63,19 +63,24 @@ for r in rows:
     uname = r['name']
     rds.hset('qxy:servicer:' + sid, 'status','quit')
     print('sid:' + sid + '_stype:' + stype +'_shopId:' + shopId + '_shopName:' + shopName)
-    if stype == 'SHOP_IM':
+    if stype == 'SHOP_IM' or stype == '1':
         #print('sid:' + sid + '_stype:' + stype +'_shopId:' + shopId + '_shopName:' + shopName)
         shopIds = rds.hget('qxy:servicer:' + sid, 'shopId')
         if shopIds != None and shopIds.find(shopId) == -1:
            shopIds = shopId + ',' + shopIds
         else:
             shopIds = ''
+        rds.hset('qxy:servicer:' + sid, 'servicer_id',sid)
         rds.hset('qxy:servicer:' + sid, 'shopName',shopName)
         rds.hset('qxy:servicer:' + sid, 'shopId',shopIds)
         rds.hset('qxy:servicer:' + sid, 'phone',phone)
         rds.hset('qxy:servicer:' + sid, 'uname',uname)
-    if stype == 'PLATFORM_IM':
-        rds.hset('qxy:servicer:' + sid, 'type','0')
+    if not rds.exists('qxy:servicer:' + sid):
+        mapping = {"registration_id":"", "count":"0", "status":"quit", "servicer_id":sid, "last_time":"", "type":stype}
+        rds.hmset("qxy:servicer:" + sid, mapping)
+    
+    # if stype == 'PLATFORM_IM' or stype == '0':
+    #     rds.hset('qxy:servicer:' + sid, 'type','0')
         
 cursor.close()
 conn.close()
